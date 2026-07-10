@@ -5,7 +5,7 @@
 //  Created by Coen ten Thije Boonkkamp on 09/01/2025.
 //
 
-import DependenciesTestSupport
+import Dependencies_Test_Support
 import Stripe_Live_Shared
 import Stripe_Payment_Link_Live
 import Stripe_Products_Live

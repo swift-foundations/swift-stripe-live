@@ -7,7 +7,7 @@
 
 import Clocks
 import Dependencies
-import DependenciesTestSupport
+import Dependencies_Test_Support
 import Foundation
 import ServerFoundation
 import Stripe_Live_Shared
