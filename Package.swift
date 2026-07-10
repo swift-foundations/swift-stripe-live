@@ -1,4 +1,4 @@
-// swift-tools-version:6.0
+// swift-tools-version: 6.3.1
 
 import Foundation
 import PackageDescription
@@ -224,11 +224,8 @@ extension Target.Dependency {
     static var authenticating: Self {
         .product(name: "Authenticating", package: "swift-authenticating")
     }
-    static var dependenciesMacros: Self {
-        .product(name: "DependenciesMacros", package: "swift-dependencies")
-    }
     static var dependenciesTestSupport: Self {
-        .product(name: "DependenciesTestSupport", package: "swift-dependencies")
+        .product(name: "Dependencies Test Support", package: "swift-dependencies")
     }
     static var tagged: Self { .product(name: "Tagged", package: "swift-tagged") }
 }
@@ -236,8 +233,8 @@ extension Target.Dependency {
 let package = Package(
     name: "swift-stripe-live",
     platforms: [
-        .macOS(.v14),
-        .iOS(.v17),
+        .macOS(.v26),
+        .iOS(.v26),
     ],
     products: [
         .library(name: .stripeLive, targets: [.stripeLive]),
@@ -285,9 +282,9 @@ let package = Package(
     dependencies: [
         .package(url: "https://github.com/coenttb/swift-authenticating.git", from: "0.0.1"),
         .package(url: "https://github.com/coenttb/swift-environment-variables.git", from: "0.0.1"),
-        .package(url: "https://github.com/coenttb/swift-server-foundation.git", from: "0.3.0"),
-        .package(url: "https://github.com/coenttb/swift-stripe-types.git", from: "0.0.1"),
-        .package(url: "https://github.com/pointfreeco/swift-dependencies.git", from: "1.9.2"),
+        .package(url: "https://github.com/swift-foundations/swift-server-foundation.git", branch: "main"),
+        .package(url: "https://github.com/swift-standards/swift-stripe-types.git", branch: "main"),
+        .package(url: "https://github.com/swift-foundations/swift-dependencies.git", branch: "main"),
         .package(url: "https://github.com/pointfreeco/swift-tagged.git", from: "0.10.0"),
     ],
     targets: [
@@ -306,7 +303,6 @@ let package = Package(
                 .stripeLiveShared,
                 .serverFoundation,
                 .tagged,
-                .dependenciesMacros,
                 .stripeBalanceLive,
                 .stripeBalanceTransactionsLive,
                 .stripeChargesLive,
@@ -369,7 +365,6 @@ let package = Package(
                 .stripeLiveShared,
                 .serverFoundation,
                 .tagged,
-                .dependenciesMacros,
             ]
         ),
         .testTarget(
@@ -386,7 +381,6 @@ let package = Package(
                 .stripeLiveShared,
                 .serverFoundation,
                 .tagged,
-                .dependenciesMacros,
             ]
         ),
         .testTarget(
@@ -403,7 +397,6 @@ let package = Package(
                 .stripeLiveShared,
                 .serverFoundation,
                 .tagged,
-                .dependenciesMacros,
             ]
         ),
         .testTarget(
@@ -420,7 +413,6 @@ let package = Package(
                 .stripeLiveShared,
                 .serverFoundation,
                 .tagged,
-                .dependenciesMacros,
             ]
         ),
         .testTarget(
@@ -437,7 +429,6 @@ let package = Package(
                 .stripeLiveShared,
                 .serverFoundation,
                 .tagged,
-                .dependenciesMacros,
             ]
         ),
         .testTarget(
@@ -454,7 +445,6 @@ let package = Package(
                 .stripeLiveShared,
                 .serverFoundation,
                 .tagged,
-                .dependenciesMacros,
             ]
         ),
         .testTarget(
@@ -471,7 +461,6 @@ let package = Package(
                 .stripeLiveShared,
                 .serverFoundation,
                 .tagged,
-                .dependenciesMacros,
             ]
         ),
         .testTarget(
@@ -488,7 +477,6 @@ let package = Package(
                 .stripeLiveShared,
                 .serverFoundation,
                 .tagged,
-                .dependenciesMacros,
             ]
         ),
         .testTarget(
@@ -505,7 +493,6 @@ let package = Package(
                 .stripeLiveShared,
                 .serverFoundation,
                 .tagged,
-                .dependenciesMacros,
             ]
         ),
         .testTarget(
@@ -522,7 +509,6 @@ let package = Package(
                 .stripeLiveShared,
                 .serverFoundation,
                 .tagged,
-                .dependenciesMacros,
             ]
         ),
         .testTarget(
@@ -539,7 +525,6 @@ let package = Package(
                 .stripeLiveShared,
                 .serverFoundation,
                 .tagged,
-                .dependenciesMacros,
             ]
         ),
         .testTarget(
@@ -556,7 +541,6 @@ let package = Package(
                 .stripeLiveShared,
                 .serverFoundation,
                 .tagged,
-                .dependenciesMacros,
             ]
         ),
         .testTarget(
@@ -573,7 +557,6 @@ let package = Package(
                 .stripeLiveShared,
                 .serverFoundation,
                 .tagged,
-                .dependenciesMacros,
             ]
         ),
         .testTarget(
@@ -590,7 +573,6 @@ let package = Package(
                 .stripeLiveShared,
                 .serverFoundation,
                 .tagged,
-                .dependenciesMacros,
             ]
         ),
         .testTarget(
@@ -607,7 +589,6 @@ let package = Package(
                 .stripeLiveShared,
                 .serverFoundation,
                 .tagged,
-                .dependenciesMacros,
             ]
         ),
         .testTarget(
@@ -624,7 +605,6 @@ let package = Package(
                 .stripeLiveShared,
                 .serverFoundation,
                 .tagged,
-                .dependenciesMacros,
             ]
         ),
         .testTarget(
@@ -641,7 +621,6 @@ let package = Package(
                 .stripeLiveShared,
                 .serverFoundation,
                 .tagged,
-                .dependenciesMacros,
             ]
         ),
         .testTarget(
@@ -658,7 +637,6 @@ let package = Package(
                 .stripeLiveShared,
                 .serverFoundation,
                 .tagged,
-                .dependenciesMacros,
             ]
         ),
         .testTarget(
@@ -675,7 +653,6 @@ let package = Package(
                 .stripeLiveShared,
                 .serverFoundation,
                 .tagged,
-                .dependenciesMacros,
             ]
         ),
         .testTarget(
@@ -692,7 +669,6 @@ let package = Package(
                 .stripeLiveShared,
                 .serverFoundation,
                 .tagged,
-                .dependenciesMacros,
             ]
         ),
         .testTarget(
@@ -709,7 +685,6 @@ let package = Package(
                 .stripeLiveShared,
                 .serverFoundation,
                 .tagged,
-                .dependenciesMacros,
             ]
         ),
         .testTarget(
@@ -726,7 +701,6 @@ let package = Package(
                 .stripeLiveShared,
                 .serverFoundation,
                 .tagged,
-                .dependenciesMacros,
             ]
         ),
         .testTarget(
@@ -743,7 +717,6 @@ let package = Package(
                 .stripeLiveShared,
                 .serverFoundation,
                 .tagged,
-                .dependenciesMacros,
             ]
         ),
         .testTarget(
@@ -760,7 +733,6 @@ let package = Package(
                 .stripeLiveShared,
                 .serverFoundation,
                 .tagged,
-                .dependenciesMacros,
             ]
         ),
         .testTarget(
@@ -777,7 +749,6 @@ let package = Package(
                 .stripeLiveShared,
                 .serverFoundation,
                 .tagged,
-                .dependenciesMacros,
             ]
         ),
         .testTarget(
@@ -794,7 +765,6 @@ let package = Package(
                 .stripeLiveShared,
                 .serverFoundation,
                 .tagged,
-                .dependenciesMacros,
             ]
         ),
         .testTarget(
@@ -811,7 +781,6 @@ let package = Package(
                 .stripeLiveShared,
                 .serverFoundation,
                 .tagged,
-                .dependenciesMacros,
             ]
         ),
         .testTarget(
@@ -828,7 +797,6 @@ let package = Package(
                 .stripeLiveShared,
                 .serverFoundation,
                 .tagged,
-                .dependenciesMacros,
             ]
         ),
         .testTarget(
@@ -845,7 +813,6 @@ let package = Package(
                 .stripeLiveShared,
                 .serverFoundation,
                 .tagged,
-                .dependenciesMacros,
             ]
         ),
         .testTarget(
@@ -862,7 +829,6 @@ let package = Package(
                 .stripeLiveShared,
                 .serverFoundation,
                 .tagged,
-                .dependenciesMacros,
             ]
         ),
         .testTarget(
@@ -879,7 +845,6 @@ let package = Package(
                 .stripeLiveShared,
                 .serverFoundation,
                 .tagged,
-                .dependenciesMacros,
             ]
         ),
         .testTarget(
@@ -896,7 +861,6 @@ let package = Package(
                 .stripeLiveShared,
                 .serverFoundation,
                 .tagged,
-                .dependenciesMacros,
             ]
         ),
         .testTarget(
@@ -913,7 +877,6 @@ let package = Package(
                 .stripeLiveShared,
                 .serverFoundation,
                 .tagged,
-                .dependenciesMacros,
             ]
         ),
         .testTarget(
@@ -930,7 +893,6 @@ let package = Package(
                 .stripeLiveShared,
                 .serverFoundation,
                 .tagged,
-                .dependenciesMacros,
             ]
         ),
         .testTarget(
@@ -947,7 +909,6 @@ let package = Package(
                 .stripeLiveShared,
                 .serverFoundation,
                 .tagged,
-                .dependenciesMacros,
             ]
         ),
         .testTarget(
@@ -964,7 +925,6 @@ let package = Package(
                 .stripeLiveShared,
                 .serverFoundation,
                 .tagged,
-                .dependenciesMacros,
             ]
         ),
         .testTarget(
@@ -981,7 +941,6 @@ let package = Package(
                 .stripeLiveShared,
                 .serverFoundation,
                 .tagged,
-                .dependenciesMacros,
             ]
         ),
         .testTarget(
@@ -998,7 +957,6 @@ let package = Package(
                 .stripeLiveShared,
                 .serverFoundation,
                 .tagged,
-                .dependenciesMacros,
             ]
         ),
         .testTarget(
@@ -1015,7 +973,6 @@ let package = Package(
                 .stripeLiveShared,
                 .serverFoundation,
                 .tagged,
-                .dependenciesMacros,
             ]
         ),
         .testTarget(
