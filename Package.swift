@@ -227,7 +227,6 @@ extension Target.Dependency {
     static var dependenciesTestSupport: Self {
         .product(name: "Dependencies Test Support", package: "swift-dependencies")
     }
-    static var tagged: Self { .product(name: "Tagged", package: "swift-tagged") }
 }
 
 let package = Package(
@@ -285,7 +284,6 @@ let package = Package(
         .package(url: "https://github.com/swift-foundations/swift-server-foundation.git", branch: "main"),
         .package(url: "https://github.com/swift-standards/swift-stripe-types.git", branch: "main"),
         .package(url: "https://github.com/swift-foundations/swift-dependencies.git", branch: "main"),
-        .package(url: "https://github.com/pointfreeco/swift-tagged.git", from: "0.10.0"),
     ],
     targets: [
         .target(
@@ -302,7 +300,6 @@ let package = Package(
                 .stripeTypes,
                 .stripeLiveShared,
                 .serverFoundation,
-                .tagged,
                 .stripeBalanceLive,
                 .stripeBalanceTransactionsLive,
                 .stripeChargesLive,
@@ -364,7 +361,6 @@ let package = Package(
                 .stripeBalanceTypes,
                 .stripeLiveShared,
                 .serverFoundation,
-                .tagged,
             ]
         ),
         .testTarget(
@@ -380,7 +376,6 @@ let package = Package(
                 .stripeBalanceTransactionsTypes,
                 .stripeLiveShared,
                 .serverFoundation,
-                .tagged,
             ]
         ),
         .testTarget(
@@ -396,7 +391,6 @@ let package = Package(
                 .stripeChargesTypes,
                 .stripeLiveShared,
                 .serverFoundation,
-                .tagged,
             ]
         ),
         .testTarget(
@@ -412,7 +406,6 @@ let package = Package(
                 .stripeCustomersTypes,
                 .stripeLiveShared,
                 .serverFoundation,
-                .tagged,
             ]
         ),
         .testTarget(
@@ -428,7 +421,6 @@ let package = Package(
                 .stripeCustomerSessionTypes,
                 .stripeLiveShared,
                 .serverFoundation,
-                .tagged,
             ]
         ),
         .testTarget(
@@ -444,7 +436,6 @@ let package = Package(
                 .stripeDisputesTypes,
                 .stripeLiveShared,
                 .serverFoundation,
-                .tagged,
             ]
         ),
         .testTarget(
@@ -460,7 +451,6 @@ let package = Package(
                 .stripeEventsTypes,
                 .stripeLiveShared,
                 .serverFoundation,
-                .tagged,
             ]
         ),
         .testTarget(
@@ -476,7 +466,6 @@ let package = Package(
                 .stripeEventDestinationsTypes,
                 .stripeLiveShared,
                 .serverFoundation,
-                .tagged,
             ]
         ),
         .testTarget(
@@ -492,7 +481,6 @@ let package = Package(
                 .stripeFilesTypes,
                 .stripeLiveShared,
                 .serverFoundation,
-                .tagged,
             ]
         ),
         .testTarget(
@@ -508,7 +496,6 @@ let package = Package(
                 .stripeFileLinksTypes,
                 .stripeLiveShared,
                 .serverFoundation,
-                .tagged,
             ]
         ),
         .testTarget(
@@ -524,7 +511,6 @@ let package = Package(
                 .stripeMandatesTypes,
                 .stripeLiveShared,
                 .serverFoundation,
-                .tagged,
             ]
         ),
         .testTarget(
@@ -540,7 +526,6 @@ let package = Package(
                 .stripePaymentIntentsTypes,
                 .stripeLiveShared,
                 .serverFoundation,
-                .tagged,
             ]
         ),
         .testTarget(
@@ -556,7 +541,6 @@ let package = Package(
                 .stripeSetupIntentsTypes,
                 .stripeLiveShared,
                 .serverFoundation,
-                .tagged,
             ]
         ),
         .testTarget(
@@ -572,7 +556,6 @@ let package = Package(
                 .stripeSetupAttemptsTypes,
                 .stripeLiveShared,
                 .serverFoundation,
-                .tagged,
             ]
         ),
         .testTarget(
@@ -588,7 +571,6 @@ let package = Package(
                 .stripePayoutsTypes,
                 .stripeLiveShared,
                 .serverFoundation,
-                .tagged,
             ]
         ),
         .testTarget(
@@ -604,7 +586,6 @@ let package = Package(
                 .stripeRefundsTypes,
                 .stripeLiveShared,
                 .serverFoundation,
-                .tagged,
             ]
         ),
         .testTarget(
@@ -620,7 +601,6 @@ let package = Package(
                 .stripeConfirmationTokenTypes,
                 .stripeLiveShared,
                 .serverFoundation,
-                .tagged,
             ]
         ),
         .testTarget(
@@ -636,7 +616,6 @@ let package = Package(
                 .stripeTokensTypes,
                 .stripeLiveShared,
                 .serverFoundation,
-                .tagged,
             ]
         ),
         .testTarget(
@@ -652,7 +631,6 @@ let package = Package(
                 .stripePaymentMethodsTypes,
                 .stripeLiveShared,
                 .serverFoundation,
-                .tagged,
             ]
         ),
         .testTarget(
@@ -668,7 +646,6 @@ let package = Package(
                 .stripeProductsTypes,
                 .stripeLiveShared,
                 .serverFoundation,
-                .tagged,
             ]
         ),
         .testTarget(
@@ -684,7 +661,6 @@ let package = Package(
                 .stripeCheckoutTypes,
                 .stripeLiveShared,
                 .serverFoundation,
-                .tagged,
             ]
         ),
         .testTarget(
@@ -700,7 +676,6 @@ let package = Package(
                 .stripePaymentLinkTypes,
                 .stripeLiveShared,
                 .serverFoundation,
-                .tagged,
             ]
         ),
         .testTarget(
@@ -716,7 +691,6 @@ let package = Package(
                 .stripeBillingTypes,
                 .stripeLiveShared,
                 .serverFoundation,
-                .tagged,
             ]
         ),
         .testTarget(
@@ -732,7 +706,6 @@ let package = Package(
                 .stripeCapitalTypes,
                 .stripeLiveShared,
                 .serverFoundation,
-                .tagged,
             ]
         ),
         .testTarget(
@@ -748,7 +721,6 @@ let package = Package(
                 .stripeConnectTypes,
                 .stripeLiveShared,
                 .serverFoundation,
-                .tagged,
             ]
         ),
         .testTarget(
@@ -764,7 +736,6 @@ let package = Package(
                 .stripeFraudTypes,
                 .stripeLiveShared,
                 .serverFoundation,
-                .tagged,
             ]
         ),
         .testTarget(
@@ -780,7 +751,6 @@ let package = Package(
                 .stripeIssuingTypes,
                 .stripeLiveShared,
                 .serverFoundation,
-                .tagged,
             ]
         ),
         .testTarget(
@@ -796,7 +766,6 @@ let package = Package(
                 .stripeTerminalTypes,
                 .stripeLiveShared,
                 .serverFoundation,
-                .tagged,
             ]
         ),
         .testTarget(
@@ -812,7 +781,6 @@ let package = Package(
                 .stripeTreasuryTypes,
                 .stripeLiveShared,
                 .serverFoundation,
-                .tagged,
             ]
         ),
         .testTarget(
@@ -828,7 +796,6 @@ let package = Package(
                 .stripeEntitlementsTypes,
                 .stripeLiveShared,
                 .serverFoundation,
-                .tagged,
             ]
         ),
         .testTarget(
@@ -844,7 +811,6 @@ let package = Package(
                 .stripeSigmaTypes,
                 .stripeLiveShared,
                 .serverFoundation,
-                .tagged,
             ]
         ),
         .testTarget(
@@ -860,7 +826,6 @@ let package = Package(
                 .stripeReportingTypes,
                 .stripeLiveShared,
                 .serverFoundation,
-                .tagged,
             ]
         ),
         .testTarget(
@@ -876,7 +841,6 @@ let package = Package(
                 .stripeFinancialConnectionsTypes,
                 .stripeLiveShared,
                 .serverFoundation,
-                .tagged,
             ]
         ),
         .testTarget(
@@ -892,7 +856,6 @@ let package = Package(
                 .stripeTaxTypes,
                 .stripeLiveShared,
                 .serverFoundation,
-                .tagged,
             ]
         ),
         .testTarget(
@@ -908,7 +871,6 @@ let package = Package(
                 .stripeIdentityTypes,
                 .stripeLiveShared,
                 .serverFoundation,
-                .tagged,
             ]
         ),
         .testTarget(
@@ -924,7 +886,6 @@ let package = Package(
                 .stripeCryptoTypes,
                 .stripeLiveShared,
                 .serverFoundation,
-                .tagged,
             ]
         ),
         .testTarget(
@@ -940,7 +901,6 @@ let package = Package(
                 .stripeClimateTypes,
                 .stripeLiveShared,
                 .serverFoundation,
-                .tagged,
             ]
         ),
         .testTarget(
@@ -956,7 +916,6 @@ let package = Package(
                 .stripeForwardingTypes,
                 .stripeLiveShared,
                 .serverFoundation,
-                .tagged,
             ]
         ),
         .testTarget(
@@ -972,7 +931,6 @@ let package = Package(
                 .stripeWebhooksTypes,
                 .stripeLiveShared,
                 .serverFoundation,
-                .tagged,
             ]
         ),
         .testTarget(
