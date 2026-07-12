@@ -21,7 +21,7 @@ public typealias Authenticated<
     Client
 > where APIRouter.Output == API, APIRouter.Input == URLRequestData
 
-extension Authenticated {
+extension Authenticated where APIRouter: Sendable {
     public init(
         router: APIRouter,
         buildClient:
@@ -50,7 +50,7 @@ extension Authenticated {
     }
 }
 
-extension Authenticated {
+extension Authenticated where APIRouter: Sendable {
     package static func fromEnvironmentVariables(
         router: APIRouter,
         buildClient:
@@ -65,7 +65,7 @@ extension Authenticated {
     }
 }
 
-extension Authenticated where APIRouter: Dependency.Key.Test, APIRouter.Value == APIRouter {
+extension Authenticated where APIRouter: Dependency.Key, APIRouter.Value == APIRouter {
     package init(
         buildClient: @escaping @Sendable () -> Client
     ) throws where Auth == BearerAuth, AuthRouter == StripeAuthRouter {
@@ -76,7 +76,7 @@ extension Authenticated where APIRouter: Dependency.Key.Test, APIRouter.Value ==
     }
 }
 
-extension Authenticated where APIRouter: Dependency.Key.Test, APIRouter.Value == APIRouter {
+extension Authenticated where APIRouter: Dependency.Key, APIRouter.Value == APIRouter {
     package init(
         _ buildClient:
             @escaping @Sendable (
