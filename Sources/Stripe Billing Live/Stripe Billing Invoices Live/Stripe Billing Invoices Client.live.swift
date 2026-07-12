@@ -91,6 +91,12 @@ extension Stripe.Billing.Invoices {
     >
 }
 
+/// Caseless namespace enum whose home-module declaration omits the `Sendable` its
+/// Namespaces.swift siblings carry; `Dependency.Key` (= `Witness.Key`) inherits
+/// `Sendable`, so the retroactive conformance below must supply it. `@unchecked` is
+/// the compiler-prescribed retroactive spelling and is honest for a caseless enum.
+extension Stripe.Billing.Invoices: @retroactive @unchecked Sendable {}
+
 extension Stripe.Billing.Invoices: @retroactive Dependency.Key {
     public static var liveValue: Stripe.Billing.Invoices.Authenticated {
         try! Stripe.Billing.Invoices.Authenticated { .live(makeRequest: $0) }
