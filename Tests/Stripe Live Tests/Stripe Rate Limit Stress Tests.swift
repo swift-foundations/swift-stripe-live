@@ -5,8 +5,7 @@
 //  Aggressive tests to verify rate limiting handles Stripe's actual limits
 //
 
-import Clocks
-import Dependencies
+import Clocks_Dependencyimport Dependencies
 import Dependencies_Test_Support
 import EnvironmentVariables
 import Foundation
@@ -25,14 +24,14 @@ struct RequestTiming {
     .dependency(\.projectRoot, .stripe),
     .dependency(\.envVars, .development),
     .dependency(\.date, .init(Date.init)),
-    .dependency(\.continuousClock, ContinuousClock())
+    .dependency(\.clock, Clock.Any(Clock.Continuous()))
 )
 struct StripeRateLimitStressTests {
 
     @Test("Should handle exceeding Stripe's test mode limit (25 req/sec)")
     func testExceedingStripeLimits() async throws {
         @Dependency(Stripe.Products.Products.self) var client
-        @Dependency(\.continuousClock) var clock
+        @Dependency(\.clock) var clock
 
         // Test mode limit is 25 requests/second
         // Let's try to make 50 requests in 1 second (2x the limit)

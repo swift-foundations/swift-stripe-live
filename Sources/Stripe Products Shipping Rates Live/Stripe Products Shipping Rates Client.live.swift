@@ -56,14 +56,14 @@ extension Stripe.Products.ShippingRates {
     >
 }
 
-extension Stripe.Products.ShippingRates: @retroactive DependencyKey {
+extension Stripe.Products.ShippingRates: @retroactive Dependency.Key {
     public static var liveValue: Stripe.Products.ShippingRates.Authenticated {
         try! Stripe.Products.ShippingRates.Authenticated { .live(makeRequest: $0) }
     }
     public static let testValue: Stripe.Products.ShippingRates.Authenticated = liveValue
 }
 
-extension Stripe.Products.ShippingRates.API.Router: @retroactive DependencyKey {
+extension Stripe.Products.ShippingRates.API.Router: @retroactive Dependency.Key {
     public static let liveValue: Self = .init()
     public static let testValue: Self = .init()
 }

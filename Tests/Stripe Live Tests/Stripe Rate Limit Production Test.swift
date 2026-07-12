@@ -5,8 +5,7 @@
 //  Test rate limiting with proper dependencies
 //
 
-import Clocks
-import Dependencies
+import Clocks_Dependencyimport Dependencies
 import Dependencies_Test_Support
 import EnvironmentVariables
 import Foundation
@@ -19,7 +18,7 @@ import Testing
     .dependency(\.projectRoot, .stripe),
     .dependency(\.envVars, .development),
     .dependency(\.date, .init(Date.init)),
-    .dependency(\.continuousClock, ContinuousClock())
+    .dependency(\.clock, Clock.Any(Clock.Continuous()))
 )
 struct StripeRateLimitProductionTest {
 

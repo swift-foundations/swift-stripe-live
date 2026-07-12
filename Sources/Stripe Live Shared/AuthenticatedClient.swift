@@ -25,7 +25,7 @@ extension Authenticated {
     public init(
         router: APIRouter,
         buildClient:
-            @escaping @Sendable (@escaping @Sendable (API) throws -> URLRequest) -> ClientOutput
+            @escaping @Sendable (@escaping @Sendable (API) throws -> URLRequest) -> Client
     ) throws where Auth == BearerAuth, AuthRouter == StripeAuthRouter {
         @Dependency(\.envVars.stripe.baseUrl) var baseUrl
         @Dependency(\.envVars.stripe.secretKey) var secretKey
@@ -56,7 +56,7 @@ extension Authenticated {
         buildClient:
             @escaping @Sendable (
                 _ makeRequest: @escaping @Sendable (_ route: API) throws -> URLRequest
-            ) -> ClientOutput
+            ) -> Client
     ) throws -> Self where Auth == BearerAuth, AuthRouter == StripeAuthRouter {
         try .init(
             router: router,
@@ -65,9 +65,9 @@ extension Authenticated {
     }
 }
 
-extension Authenticated where APIRouter: TestDependencyKey, APIRouter.Value == APIRouter {
+extension Authenticated where APIRouter: Dependency.Key.Test, APIRouter.Value == APIRouter {
     package init(
-        buildClient: @escaping @Sendable () -> ClientOutput
+        buildClient: @escaping @Sendable () -> Client
     ) throws where Auth == BearerAuth, AuthRouter == StripeAuthRouter {
         @Dependency(APIRouter.self) var router
         self = try .fromEnvironmentVariables(
@@ -76,12 +76,12 @@ extension Authenticated where APIRouter: TestDependencyKey, APIRouter.Value == A
     }
 }
 
-extension Authenticated where APIRouter: TestDependencyKey, APIRouter.Value == APIRouter {
+extension Authenticated where APIRouter: Dependency.Key.Test, APIRouter.Value == APIRouter {
     package init(
         _ buildClient:
             @escaping @Sendable (
                 _ makeRequest: @escaping @Sendable (_ route: API) throws -> URLRequest
-            ) -> ClientOutput
+            ) -> Client
     ) throws where Auth == BearerAuth, AuthRouter == StripeAuthRouter {
         @Dependency(APIRouter.self) var router
         self = try .fromEnvironmentVariables(
@@ -99,7 +99,7 @@ public struct StripeAuthRouter: ParserPrinter, Sendable {
         Headers {
             Field("Stripe-Version") { "2024-12-18.acacia" }
 
-            Field.form.urlEncoded
+            ContentType { "application/x-www-form-urlencoded" }
         }
 
         BearerAuth.Router()

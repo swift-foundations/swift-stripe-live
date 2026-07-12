@@ -52,14 +52,14 @@ extension Stripe.Refunds {
     >
 }
 
-extension Stripe.Refunds: @retroactive DependencyKey {
+extension Stripe.Refunds: @retroactive Dependency.Key {
     public static var liveValue: Stripe.Refunds.Authenticated {
         try! Stripe.Refunds.Authenticated { .live(makeRequest: $0) }
     }
     public static let testValue: Stripe.Refunds.Authenticated = liveValue
 }
 
-extension Stripe.Refunds.API.Router: @retroactive DependencyKey {
+extension Stripe.Refunds.API.Router: @retroactive Dependency.Key {
     public static let liveValue: Self = .init()
     public static let testValue: Self = .init()
 }

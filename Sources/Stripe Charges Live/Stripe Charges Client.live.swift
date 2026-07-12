@@ -58,14 +58,14 @@ extension Stripe.Charges {
     >
 }
 
-extension Stripe.Charges: @retroactive DependencyKey {
+extension Stripe.Charges: @retroactive Dependency.Key {
     public static var liveValue: Stripe.Charges.Authenticated {
         try! Stripe.Charges.Authenticated { .live(makeRequest: $0) }
     }
     public static let testValue: Stripe.Charges.Authenticated = liveValue
 }
 
-extension Stripe.Charges.API.Router: @retroactive DependencyKey {
+extension Stripe.Charges.API.Router: @retroactive Dependency.Key {
     public static let liveValue: Self = .init()
     public static let testValue: Self = .init()
 }

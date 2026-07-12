@@ -5,8 +5,7 @@
 //  Tests to verify rate limiting is working correctly
 //
 
-import Clocks
-import Dependencies
+import Clocks_Dependencyimport Dependencies
 import Dependencies_Test_Support
 import EnvironmentVariables
 import Foundation
@@ -19,7 +18,7 @@ import Testing
     .dependency(\.projectRoot, .stripe),
     .dependency(\.envVars, .development),
     .dependency(\.date, .init(Date.init)),
-    .dependency(\.continuousClock, ContinuousClock()),
+    .dependency(\.clock, Clock.Any(Clock.Continuous())),
     .serialized
 )
 struct StripeRateLimitingIntegrationTests {
@@ -27,7 +26,7 @@ struct StripeRateLimitingIntegrationTests {
     @Test("Should handle rate limiting without 429 errors")
     func testRateLimitingPrevents429Errors() async throws {
         @Dependency(Stripe.Products.Products.self) var client
-        @Dependency(\.continuousClock) var clock
+        @Dependency(\.clock) var clock
 
         // Test rate limits are 25 requests/sec = 1500/min
         // Let's try to make 30 requests rapidly
@@ -101,7 +100,7 @@ struct StripeRateLimitingIntegrationTests {
     @Test("Should introduce delays when approaching rate limit")
     func testRateLimitingIntroducesDelays() async throws {
         @Dependency(Stripe.Products.Products.self) var client
-        @Dependency(\.continuousClock) var clock
+        @Dependency(\.clock) var clock
 
         // Create a test product
         let product = try await client.client.create(

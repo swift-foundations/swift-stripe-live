@@ -28,14 +28,14 @@ extension Stripe.Setup.Attempts {
     >
 }
 
-extension Stripe.Setup.Attempts: @retroactive DependencyKey {
+extension Stripe.Setup.Attempts: @retroactive Dependency.Key {
     public static var liveValue: Stripe.Setup.Attempts.Authenticated {
         try! Stripe.Setup.Attempts.Authenticated { .live(makeRequest: $0) }
     }
     public static let testValue: Stripe.Setup.Attempts.Authenticated = liveValue
 }
 
-extension Stripe.Setup.Attempts.API.Router: @retroactive DependencyKey {
+extension Stripe.Setup.Attempts.API.Router: @retroactive Dependency.Key {
     public static let liveValue: Self = .init()
     public static let testValue: Self = .init()
 }

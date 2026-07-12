@@ -6,8 +6,7 @@
 ////
 //
 
-import Clocks
-import Dependencies
+import Clocks_Dependencyimport Dependencies
 import Foundation
 import ServerFoundation
 
@@ -18,7 +17,7 @@ extension URLRequest.Handler {
 }
 
 /// Dependency key for Stripe throttled client that combines rate limiting and pacing
-struct StripeThrottledClientKey: DependencyKey {
+struct StripeThrottledClientKey: Dependency.Key {
     static let liveValue = ThrottledClient<String>(
         rateLimiter: RateLimiter<String>(
             windows: [
@@ -50,14 +49,14 @@ struct StripeThrottledClientKey: DependencyKey {
     )
 }
 
-extension DependencyValues {
+extension Dependency.Values {
     package var stripeThrottledClient: ThrottledClient<String> {
         get { self[StripeThrottledClientKey.self] }
         set { self[StripeThrottledClientKey.self] = newValue }
     }
 }
 
-extension URLRequest.Handler.Stripe: DependencyKey {
+extension URLRequest.Handler.Stripe: Dependency.Key {
 
     package static var liveValue: URLRequest.Handler { Self.default() }
 
@@ -87,7 +86,7 @@ extension URLRequest.Handler.Stripe: DependencyKey {
         retryCount: Int = 0,
         maxRetries: Int = 5
     ) async throws -> (Data, URLResponse) {
-        @Dependency(\.continuousClock) var clock
+        @Dependency(\.clock) var clock
         @Dependency(\.stripeThrottledClient) var throttledClient
         let rateLimitKey = "stripe-api"
 

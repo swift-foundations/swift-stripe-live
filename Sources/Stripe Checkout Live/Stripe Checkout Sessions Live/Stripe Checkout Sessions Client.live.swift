@@ -62,14 +62,14 @@ extension Stripe.Checkout.Sessions {
     >
 }
 
-extension Stripe.Checkout.Sessions: @retroactive DependencyKey {
+extension Stripe.Checkout.Sessions: @retroactive Dependency.Key {
     public static var liveValue: Stripe.Checkout.Sessions.Authenticated {
         try! Stripe.Checkout.Sessions.Authenticated { .live(makeRequest: $0) }
     }
     public static let testValue: Stripe.Checkout.Sessions.Authenticated = liveValue
 }
 
-extension Stripe.Checkout.Sessions.API.Router: @retroactive DependencyKey {
+extension Stripe.Checkout.Sessions.API.Router: @retroactive Dependency.Key {
     public static let liveValue: Self = .init()
     public static let testValue: Self = .init()
 }

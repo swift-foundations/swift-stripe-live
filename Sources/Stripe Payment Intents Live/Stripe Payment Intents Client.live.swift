@@ -101,14 +101,14 @@ extension Stripe.PaymentIntents {
     >
 }
 
-extension Stripe.PaymentIntents: @retroactive DependencyKey {
+extension Stripe.PaymentIntents: @retroactive Dependency.Key {
     public static var liveValue: Stripe.PaymentIntents.Authenticated {
         try! Stripe.PaymentIntents.Authenticated { .live(makeRequest: $0) }
     }
     public static let testValue: Stripe.PaymentIntents.Authenticated = liveValue
 }
 
-extension Stripe.PaymentIntents.API.Router: @retroactive DependencyKey {
+extension Stripe.PaymentIntents.API.Router: @retroactive Dependency.Key {
     public static let liveValue: Self = .init()
     public static let testValue: Self = .init()
 }

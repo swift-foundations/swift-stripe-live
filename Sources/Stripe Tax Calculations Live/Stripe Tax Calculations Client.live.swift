@@ -48,14 +48,14 @@ extension Stripe.Tax.Calculations {
     >
 }
 
-extension Stripe.Tax.Calculations: @retroactive DependencyKey {
+extension Stripe.Tax.Calculations: @retroactive Dependency.Key {
     public static var liveValue: Stripe.Tax.Calculations.Authenticated {
         try! Stripe.Tax.Calculations.Authenticated { .live(makeRequest: $0) }
     }
     public static let testValue: Stripe.Tax.Calculations.Authenticated = liveValue
 }
 
-extension Stripe.Tax.Calculations.API.Router: @retroactive DependencyKey {
+extension Stripe.Tax.Calculations.API.Router: @retroactive Dependency.Key {
     public static let liveValue: Self = .init()
     public static let testValue: Self = .init()
 }

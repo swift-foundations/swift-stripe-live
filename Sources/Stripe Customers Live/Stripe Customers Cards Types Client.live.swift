@@ -60,14 +60,14 @@ extension Stripe.Customers.Cards {
     >
 }
 
-extension Stripe.Customers.Cards: @retroactive DependencyKey {
+extension Stripe.Customers.Cards: @retroactive Dependency.Key {
     public static var liveValue: Stripe.Customers.Cards.Authenticated {
         try! Stripe.Customers.Cards.Authenticated { .live(makeRequest: $0) }
     }
     public static let testValue: Stripe.Customers.Cards.Authenticated = liveValue
 }
 
-extension Stripe.Customers.Cards.API.Router: @retroactive DependencyKey {
+extension Stripe.Customers.Cards.API.Router: @retroactive Dependency.Key {
     public static let liveValue: Self = .init()
     public static let testValue: Self = .init()
 }

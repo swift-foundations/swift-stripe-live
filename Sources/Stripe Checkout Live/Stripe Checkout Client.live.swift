@@ -23,14 +23,14 @@ extension Stripe.Checkout {
     >
 }
 
-extension Stripe.Checkout: @retroactive DependencyKey {
+extension Stripe.Checkout: @retroactive Dependency.Key {
     public static var liveValue: Stripe.Checkout.Authenticated {
         try! Stripe.Checkout.Authenticated { .live(makeRequest: $0) }
     }
     public static let testValue: Stripe.Checkout.Authenticated = liveValue
 }
 
-extension Stripe.Checkout.API.Router: @retroactive DependencyKey {
+extension Stripe.Checkout.API.Router: @retroactive Dependency.Key {
     public static let liveValue: Self = .init()
     public static let testValue: Self = .init()
 }

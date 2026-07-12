@@ -34,14 +34,14 @@ extension Stripe.Tokens {
     >
 }
 
-extension Stripe.Tokens: @retroactive DependencyKey {
+extension Stripe.Tokens: @retroactive Dependency.Key {
     public static var liveValue: Stripe.Tokens.Authenticated {
         try! Stripe.Tokens.Authenticated { .live(makeRequest: $0) }
     }
     public static let testValue: Stripe.Tokens.Authenticated = liveValue
 }
 
-extension Stripe.Tokens.API.Router: @retroactive DependencyKey {
+extension Stripe.Tokens.API.Router: @retroactive Dependency.Key {
     public static let liveValue: Self = .init()
     public static let testValue: Self = .init()
 }

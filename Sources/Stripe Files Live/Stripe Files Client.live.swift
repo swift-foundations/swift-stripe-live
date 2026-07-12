@@ -40,14 +40,14 @@ extension Stripe.Files {
     >
 }
 
-extension Stripe.Files: @retroactive DependencyKey {
+extension Stripe.Files: @retroactive Dependency.Key {
     public static var liveValue: Stripe.Files.Authenticated {
         try! Stripe.Files.Authenticated { .live(makeRequest: $0) }
     }
     public static let testValue: Stripe.Files.Authenticated = liveValue
 }
 
-extension Stripe.Files.API.Router: @retroactive DependencyKey {
+extension Stripe.Files.API.Router: @retroactive Dependency.Key {
     public static let liveValue: Self = .init()
     public static let testValue: Self = .init()
 }

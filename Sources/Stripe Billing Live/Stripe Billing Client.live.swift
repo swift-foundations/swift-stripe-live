@@ -29,14 +29,14 @@ extension Stripe.Billing {
     >
 }
 
-extension Stripe.Billing: @retroactive DependencyKey {
+extension Stripe.Billing: @retroactive Dependency.Key {
     public static var liveValue: Stripe.Billing.Authenticated {
         try! Stripe.Billing.Authenticated { .live(makeRequest: $0) }
     }
     public static let testValue: Stripe.Billing.Authenticated = liveValue
 }
 
-extension Stripe.Billing.API.Router: @retroactive DependencyKey {
+extension Stripe.Billing.API.Router: @retroactive Dependency.Key {
     public static let liveValue: Self = .init()
     public static let testValue: Self = .init()
 }

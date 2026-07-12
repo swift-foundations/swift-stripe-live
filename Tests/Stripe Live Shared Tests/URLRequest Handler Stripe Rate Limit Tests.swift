@@ -5,8 +5,7 @@
 //  Created by Coen ten Thije Boonkkamp on 04/08/2025.
 //
 
-import Clocks
-import Dependencies
+import Clocks_Dependencyimport Dependencies
 import Dependencies_Test_Support
 import Foundation
 import ServerFoundation
@@ -106,10 +105,10 @@ struct URLRequestHandlerStripeRateLimitTests {
     func testRateLimiterPreventssBursts() async throws {
         // Test that rate limiter spaces out requests
         let tracker = TestTracker()
-        let testClock = TestClock()
+        let testClock = Clock.Test()
 
         await withDependencies {
-            $0.continuousClock = testClock
+            $0.clock = Clock.Any(testClock)
             $0.defaultSession = { @Sendable request in
                 _ = await tracker.recordRequest()
 

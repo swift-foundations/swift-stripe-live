@@ -77,14 +77,14 @@ extension Stripe.Customers.BankAccounts {
     >
 }
 
-extension Stripe.Customers.BankAccounts: @retroactive DependencyKey {
+extension Stripe.Customers.BankAccounts: @retroactive Dependency.Key {
     public static var liveValue: Stripe.Customers.BankAccounts.Authenticated {
         try! Stripe.Customers.BankAccounts.Authenticated { .live(makeRequest: $0) }
     }
     public static let testValue: Stripe.Customers.BankAccounts.Authenticated = liveValue
 }
 
-extension Stripe.Customers.BankAccounts.API.Router: @retroactive DependencyKey {
+extension Stripe.Customers.BankAccounts.API.Router: @retroactive Dependency.Key {
     public static let liveValue: Self = .init()
     public static let testValue: Self = .init()
 }

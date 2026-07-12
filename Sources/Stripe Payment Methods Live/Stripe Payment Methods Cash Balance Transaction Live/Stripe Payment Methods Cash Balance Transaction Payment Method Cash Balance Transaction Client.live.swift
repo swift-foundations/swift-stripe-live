@@ -70,14 +70,14 @@ extension Stripe.PaymentMethods.PaymentMethods {
     >
 }
 
-extension Stripe.PaymentMethods.PaymentMethods: @retroactive DependencyKey {
+extension Stripe.PaymentMethods.PaymentMethods: @retroactive Dependency.Key {
     public static var liveValue: Stripe.PaymentMethods.Authenticated {
         try! Stripe.PaymentMethods.Authenticated { .live(makeRequest: $0) }
     }
     public static let testValue: Stripe.PaymentMethods.Authenticated = liveValue
 }
 
-extension Stripe.PaymentMethods.PaymentMethods.API.Router: @retroactive DependencyKey {
+extension Stripe.PaymentMethods.PaymentMethods.API.Router: @retroactive Dependency.Key {
     public static let liveValue: Self = .init()
     public static let testValue: Self = .init()
 }

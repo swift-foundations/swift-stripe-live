@@ -69,14 +69,14 @@ extension Stripe.Billing.Alerts {
     >
 }
 
-extension Stripe.Billing.Alerts: @retroactive DependencyKey {
+extension Stripe.Billing.Alerts: @retroactive Dependency.Key {
     public static var liveValue: Stripe.Billing.Alerts.Authenticated {
         try! Stripe.Billing.Alerts.Authenticated { .live(makeRequest: $0) }
     }
     public static let testValue: Stripe.Billing.Alerts.Authenticated = liveValue
 }
 
-extension Stripe.Billing.Alerts.API.Router: @retroactive DependencyKey {
+extension Stripe.Billing.Alerts.API.Router: @retroactive Dependency.Key {
     public static let liveValue: Self = .init()
     public static let testValue: Self = .init()
 }

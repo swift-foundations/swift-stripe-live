@@ -5,6 +5,7 @@
 //  Created by Coen ten Thije Boonkkamp on 09/01/2025.
 //
 
+import Clocks_Dependency
 import Dependencies_Test_Support
 import Stripe_Live_Shared
 import Stripe_Payment_Link_Live
@@ -16,7 +17,7 @@ import Testing
     .dependency(\.projectRoot, .stripe),
     .dependency(\.envVars, .development),
     .dependency(\.date, .init(Date.init)),
-    .dependency(\.continuousClock, ContinuousClock())
+    .dependency(\.clock, Clock.Any(Clock.Continuous()))
 )
 struct PaymentLinkClientTests {
     @Dependency(Stripe.PaymentLinks.self) var client

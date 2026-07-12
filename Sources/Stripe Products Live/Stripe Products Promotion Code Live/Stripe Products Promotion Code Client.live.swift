@@ -47,14 +47,14 @@ extension Stripe.Products.PromotionCodes {
     >
 }
 
-extension Stripe.Products.PromotionCodes: @retroactive DependencyKey {
+extension Stripe.Products.PromotionCodes: @retroactive Dependency.Key {
     public static var liveValue: Stripe.Products.PromotionCodes.Authenticated {
         try! Stripe.Products.PromotionCodes.Authenticated { .live(makeRequest: $0) }
     }
     public static let testValue: Stripe.Products.PromotionCodes.Authenticated = liveValue
 }
 
-extension Stripe.Products.PromotionCodes.API.Router: @retroactive DependencyKey {
+extension Stripe.Products.PromotionCodes.API.Router: @retroactive Dependency.Key {
     public static let liveValue: Self = .init()
     public static let testValue: Self = .init()
 }

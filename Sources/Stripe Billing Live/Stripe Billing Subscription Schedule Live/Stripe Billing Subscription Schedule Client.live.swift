@@ -73,14 +73,14 @@ extension Stripe.Billing.Subscription.Schedule {
     >
 }
 
-extension Stripe.Billing.Subscription.Schedule: @retroactive DependencyKey {
+extension Stripe.Billing.Subscription.Schedule: @retroactive Dependency.Key {
     public static var liveValue: Stripe.Billing.Subscription.Schedule.Authenticated {
         try! Stripe.Billing.Subscription.Schedule.Authenticated { .live(makeRequest: $0) }
     }
     public static let testValue: Stripe.Billing.Subscription.Schedule.Authenticated = liveValue
 }
 
-extension Stripe.Billing.Subscription.Schedule.API.Router: @retroactive DependencyKey {
+extension Stripe.Billing.Subscription.Schedule.API.Router: @retroactive Dependency.Key {
     public static let liveValue: Self = .init()
     public static let testValue: Self = .init()
 }

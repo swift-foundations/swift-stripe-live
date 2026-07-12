@@ -89,18 +89,18 @@ extension Stripe {
     >
 }
 
-extension Stripe: @retroactive DependencyKey {
+extension Stripe: @retroactive Dependency.Key {
     public static var liveValue: Stripe.Authenticated {
         try! Stripe.Authenticated { .live(makeRequest: $0) }
     }
     public static let testValue: Stripe.Authenticated = liveValue
 }
 
-extension Stripe.API.Router: @retroactive DependencyKey {
+extension Stripe.API.Router: @retroactive Dependency.Key {
     public static let liveValue: Stripe.API.Router = .init()
 }
 
-extension DependencyValues {
+extension Dependency.Values {
     public var stripe: Stripe.Authenticated {
         get { self[Stripe.self] }
         set { self[Stripe.self] = newValue }

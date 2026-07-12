@@ -41,14 +41,14 @@ extension Stripe.Customers.CashBalance {
     >
 }
 
-extension Stripe.Customers.CashBalance: @retroactive DependencyKey {
+extension Stripe.Customers.CashBalance: @retroactive Dependency.Key {
     public static var liveValue: Stripe.Customers.CashBalance.Authenticated {
         try! Stripe.Customers.CashBalance.Authenticated { .live(makeRequest: $0) }
     }
     public static let testValue: Stripe.Customers.CashBalance.Authenticated = liveValue
 }
 
-extension Stripe.Customers.CashBalance.API.Router: @retroactive DependencyKey {
+extension Stripe.Customers.CashBalance.API.Router: @retroactive Dependency.Key {
     public static let liveValue: Self = .init()
     public static let testValue: Self = .init()
 }

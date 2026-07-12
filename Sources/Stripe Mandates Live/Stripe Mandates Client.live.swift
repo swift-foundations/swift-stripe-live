@@ -28,14 +28,14 @@ extension Stripe.Mandates {
     >
 }
 
-extension Stripe.Mandates: @retroactive DependencyKey {
+extension Stripe.Mandates: @retroactive Dependency.Key {
     public static var liveValue: Stripe.Mandates.Authenticated {
         try! Stripe.Mandates.Authenticated { .live(makeRequest: $0) }
     }
     public static let testValue: Stripe.Mandates.Authenticated = liveValue
 }
 
-extension Stripe.Mandates.API.Router: @retroactive DependencyKey {
+extension Stripe.Mandates.API.Router: @retroactive Dependency.Key {
     public static let liveValue: Self = .init()
     public static let testValue: Self = .init()
 }

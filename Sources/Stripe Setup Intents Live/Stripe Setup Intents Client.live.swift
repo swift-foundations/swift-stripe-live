@@ -64,14 +64,14 @@ extension Stripe.Setup.Intents {
     >
 }
 
-extension Stripe.Setup.Intents: @retroactive DependencyKey {
+extension Stripe.Setup.Intents: @retroactive Dependency.Key {
     public static var liveValue: Stripe.Setup.Intents.Authenticated {
         try! Stripe.Setup.Intents.Authenticated { .live(makeRequest: $0) }
     }
     public static let testValue: Stripe.Setup.Intents.Authenticated = liveValue
 }
 
-extension Stripe.Setup.Intents.API.Router: @retroactive DependencyKey {
+extension Stripe.Setup.Intents.API.Router: @retroactive Dependency.Key {
     public static let liveValue: Self = .init()
     public static let testValue: Self = .init()
 }

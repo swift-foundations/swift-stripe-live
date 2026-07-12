@@ -58,14 +58,14 @@ extension Stripe.Payouts {
     >
 }
 
-extension Stripe.Payouts: @retroactive DependencyKey {
+extension Stripe.Payouts: @retroactive Dependency.Key {
     public static var liveValue: Stripe.Payouts.Authenticated {
         try! Stripe.Payouts.Authenticated { .live(makeRequest: $0) }
     }
     public static let testValue: Stripe.Payouts.Authenticated = liveValue
 }
 
-extension Stripe.Payouts.API.Router: @retroactive DependencyKey {
+extension Stripe.Payouts.API.Router: @retroactive Dependency.Key {
     public static let liveValue: Self = .init()
     public static let testValue: Self = .init()
 }

@@ -5,8 +5,7 @@
 //  Tests to verify requests within limits are not delayed
 //
 
-import Clocks
-import Dependencies
+import Clocks_Dependencyimport Dependencies
 import Dependencies_Test_Support
 import EnvironmentVariables
 import Foundation
@@ -20,7 +19,7 @@ import Throttling
     .dependency(\.projectRoot, .stripe),
     .dependency(\.envVars, .development),
     .dependency(\.date, .init(Date.init)),
-    .dependency(\.continuousClock, ContinuousClock()),
+    .dependency(\.clock, Clock.Any(Clock.Continuous())),
     .dependency(
         \.stripeThrottledClient,
         ThrottledClient<String>(
@@ -45,7 +44,7 @@ struct StripeRateLimitWithinLimitsTests {
     @Test("Requests within limits should not be delayed")
     func testRequestsWithinLimits() async throws {
         @Dependency(Stripe.Products.Products.self) var client
-        @Dependency(\.continuousClock) var clock
+        @Dependency(\.clock) var clock
 
         print("\n=== Testing Requests Within Rate Limits ===")
         print("Making 10 requests with 100ms delays (10 req/sec)")

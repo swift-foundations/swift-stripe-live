@@ -5,6 +5,7 @@
 //  Extreme tests to trigger actual 429 errors
 //
 
+import Clocks_Dependency
 import Dependencies
 import Dependencies_Test_Support
 import EnvironmentVariables
@@ -18,7 +19,7 @@ import Testing
     .dependency(\.projectRoot, .stripe),
     .dependency(\.envVars, .development),
     .dependency(\.date, .init(Date.init)),
-    .dependency(\.continuousClock, ContinuousClock())
+    .dependency(\.clock, Clock.Any(Clock.Continuous()))
 )
 struct StripeRateLimitExtremeTests {
     @Dependency(\.date) var date

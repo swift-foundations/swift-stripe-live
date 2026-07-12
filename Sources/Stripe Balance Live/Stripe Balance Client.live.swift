@@ -28,14 +28,14 @@ extension Stripe.Balance {
     >
 }
 
-extension Stripe.Balance: @retroactive DependencyKey {
+extension Stripe.Balance: @retroactive Dependency.Key {
     public static var liveValue: Stripe.Balance.Authenticated {
         try! Stripe.Balance.Authenticated { .live(makeRequest: $0) }
     }
     public static let testValue: Stripe.Balance.Authenticated = liveValue
 }
 
-extension Stripe.Balance.API.Router: @retroactive DependencyKey {
+extension Stripe.Balance.API.Router: @retroactive Dependency.Key {
     public static let liveValue: Self = .init()
     public static let testValue: Self = .init()
 }

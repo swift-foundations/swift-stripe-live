@@ -54,14 +54,14 @@ extension Stripe.Products.Coupons {
     >
 }
 
-extension Stripe.Products.Coupons: @retroactive DependencyKey {
+extension Stripe.Products.Coupons: @retroactive Dependency.Key {
     public static var liveValue: Stripe.Products.Coupons.Authenticated {
         try! Stripe.Products.Coupons.Authenticated { .live(makeRequest: $0) }
     }
     public static let testValue: Stripe.Products.Coupons.Authenticated = liveValue
 }
 
-extension Stripe.Products.Coupons.API.Router: @retroactive DependencyKey {
+extension Stripe.Products.Coupons.API.Router: @retroactive Dependency.Key {
     public static let liveValue: Self = .init()
     public static let testValue: Self = .init()
 }

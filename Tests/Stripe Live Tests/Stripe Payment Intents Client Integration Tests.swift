@@ -5,6 +5,7 @@
 //  Created by Coen ten Thije Boonkkamp on 04/01/2025.
 //
 
+import Clocks_Dependency
 import Dependencies
 import Dependencies_Test_Support
 import EnvironmentVariables
@@ -20,7 +21,7 @@ import Testing
     .dependency(\.projectRoot, .stripe),
     .dependency(\.envVars, .development),
     .dependency(\.date, .init(Date.init)),
-    .dependency(\.continuousClock, ContinuousClock())
+    .dependency(\.clock, Clock.Any(Clock.Continuous()))
 )
 struct PaymentIntentsClientTests {
     @Test("Should successfully create a payment intent")

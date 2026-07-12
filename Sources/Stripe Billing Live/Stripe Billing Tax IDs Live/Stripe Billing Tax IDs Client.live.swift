@@ -55,14 +55,14 @@ extension Stripe.Billing.TaxIDs {
     >
 }
 
-extension Stripe.Billing.TaxIDs: @retroactive DependencyKey {
+extension Stripe.Billing.TaxIDs: @retroactive Dependency.Key {
     public static var liveValue: Stripe.Billing.TaxIDs.Authenticated {
         try! Stripe.Billing.TaxIDs.Authenticated { .live(makeRequest: $0) }
     }
     public static let testValue: Stripe.Billing.TaxIDs.Authenticated = liveValue
 }
 
-extension Stripe.Billing.TaxIDs.API.Router: @retroactive DependencyKey {
+extension Stripe.Billing.TaxIDs.API.Router: @retroactive Dependency.Key {
     public static let liveValue: Self = .init()
     public static let testValue: Self = .init()
 }

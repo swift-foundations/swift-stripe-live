@@ -46,14 +46,14 @@ extension Stripe.Disputes {
     >
 }
 
-extension Stripe.Disputes: @retroactive DependencyKey {
+extension Stripe.Disputes: @retroactive Dependency.Key {
     public static var liveValue: Stripe.Disputes.Authenticated {
         try! Stripe.Disputes.Authenticated { .live(makeRequest: $0) }
     }
     public static let testValue: Stripe.Disputes.Authenticated = liveValue
 }
 
-extension Stripe.Disputes.API.Router: @retroactive DependencyKey {
+extension Stripe.Disputes.API.Router: @retroactive Dependency.Key {
     public static let liveValue: Self = .init()
     public static let testValue: Self = .init()
 }

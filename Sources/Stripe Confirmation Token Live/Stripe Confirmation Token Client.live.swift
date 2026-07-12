@@ -28,14 +28,14 @@ extension Stripe {
     >
 }
 
-extension Stripe.ConfirmationTokenClient: @retroactive DependencyKey {
+extension Stripe.ConfirmationTokenClient: @retroactive Dependency.Key {
     public static var liveValue: Stripe.ConfirmationTokenAuthenticated {
         try! Stripe.ConfirmationTokenAuthenticated { .live(makeRequest: $0) }
     }
     public static let testValue: Stripe.ConfirmationTokenAuthenticated = liveValue
 }
 
-extension Stripe.ConfirmationTokenAPI.Router: @retroactive DependencyKey {
+extension Stripe.ConfirmationTokenAPI.Router: @retroactive Dependency.Key {
     public static let liveValue: Self = .init()
     public static let testValue: Self = .init()
 }
