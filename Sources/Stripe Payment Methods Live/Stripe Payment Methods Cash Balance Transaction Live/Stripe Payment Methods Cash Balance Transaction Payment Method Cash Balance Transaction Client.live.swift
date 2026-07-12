@@ -70,6 +70,13 @@ extension Stripe.PaymentMethods.PaymentMethods {
     >
 }
 
+/// `Stripe.PaymentMethods.PaymentMethods` is a caseless namespace enum (vacuously
+/// Sendable) whose home-module declaration omits the `Sendable` annotation its
+/// Namespaces.swift siblings carry. `Dependency.Key` (= `Witness.Key`) inherits
+/// `Sendable`, so this retroactive conformance must supply it; `@unchecked` is the
+/// compiler-prescribed spelling for the retroactive case and is honest here.
+extension Stripe.PaymentMethods.PaymentMethods: @retroactive @unchecked Sendable {}
+
 extension Stripe.PaymentMethods.PaymentMethods: @retroactive Dependency.Key {
     public static var liveValue: Stripe.PaymentMethods.Authenticated {
         try! Stripe.PaymentMethods.Authenticated { .live(makeRequest: $0) }

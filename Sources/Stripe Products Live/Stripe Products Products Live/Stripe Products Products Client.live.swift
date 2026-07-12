@@ -68,6 +68,13 @@ extension Stripe.Products.Products {
     >
 }
 
+/// `Stripe.Products.Products` is a caseless namespace enum (vacuously Sendable) whose
+/// home-module declaration — unlike its siblings in Stripe Namespaces.swift — omits the
+/// `Sendable` annotation. `Dependency.Key` (= `Witness.Key`) inherits `Sendable`, so this
+/// retroactive conformance must supply it; `@unchecked` is the compiler-prescribed spelling
+/// for the retroactive case and is honest here (no state exists to check).
+extension Stripe.Products.Products: @retroactive @unchecked Sendable {}
+
 extension Stripe.Products.Products: @retroactive Dependency.Key {
     public static var liveValue: Stripe.Products.Products.Authenticated {
         try! Stripe.Products.Products.Authenticated { .live(makeRequest: $0) }
