@@ -92,16 +92,33 @@ extension Authenticated where APIRouter: Dependency.Key, APIRouter.Value == APIR
 }
 
 public struct StripeAuthRouter: ParserPrinter, Sendable {
+    public typealias Input = URLRequestData
+    public typealias Output = BearerAuth
+    public typealias Failure = RFC_3986.URI.Routing.Error
+    public typealias Body = Never
 
     public init() {}
 
-    public var body: some URLRouting.Router<BearerAuth> {
+    /// The fixed Stripe protocol headers (pinned API version + form content type).
+    /// Kept as an opaque computed member so the router stays a stateless `Sendable`
+    /// value; `Headers` unifies its field parsers' failures into the routing error
+    /// domain, so this member's `Failure` is the plain domain error.
+    private var stripeHeaders: some Parser.Bidirectional<URLRequestData, Void, Failure> {
         Headers {
             Field("Stripe-Version") { "2024-12-18.acacia" }
 
             ContentType { "application/x-www-form-urlencoded" }
         }
+    }
 
-        BearerAuth.Router()
+    public func parse(_ input: inout Input) throws(Failure) -> Output {
+        try stripeHeaders.parse(&input)
+        return try BearerAuth.Router().parse(&input)
+    }
+
+    public func print(_ output: Output, into input: inout Input) throws(Failure) {
+        // Reverse order, mirroring the sequential combinator's printer.
+        try BearerAuth.Router().print(output, into: &input)
+        try stripeHeaders.print((), into: &input)
     }
 }
