@@ -218,9 +218,6 @@ extension Target.Dependency {
     static var serverFoundation: Self {
         .product(name: "ServerFoundation", package: "swift-server-foundation")
     }
-    static var environmentVariables: Self {
-        .product(name: "EnvironmentVariables", package: "swift-environment-variables")
-    }
     static var authenticating: Self {
         .product(name: "Authenticating", package: "swift-url-routing")
     }
@@ -283,7 +280,6 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/swift-foundations/swift-url-routing.git", branch: "main"),
-        .package(url: "https://github.com/coenttb/swift-environment-variables.git", from: "0.0.1"),
         .package(url: "https://github.com/swift-foundations/swift-server-foundation.git", branch: "main"),
         .package(url: "https://github.com/swift-standards/swift-stripe-types.git", branch: "main"),
         .package(
@@ -297,7 +293,6 @@ let package = Package(
             name: .stripeLiveShared,
             dependencies: [
                 .serverFoundation,
-                .environmentVariables,
                 .authenticating,
                 .clocksDependency,
             ]

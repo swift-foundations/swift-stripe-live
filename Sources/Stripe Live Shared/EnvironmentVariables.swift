@@ -6,8 +6,9 @@
 //
 
 import Dependencies
-import EnvironmentVariables
 import Foundation
+import ServerFoundation
+import ServerFoundationEnvVars
 
 extension EnvironmentVariables {
 
@@ -62,8 +63,7 @@ extension EnvVars {
     package static var development: Self {
         @Dependency(\.projectRoot) var projectRoot
         return try! .live(
-            environmentConfiguration: .projectRoot(projectRoot, environment: "development"),
-            requiredKeys: []
+            environmentConfiguration: .projectRoot(projectRoot, environment: "development")
         )
     }
 }
