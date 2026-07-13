@@ -7,7 +7,6 @@
 
 import Dependencies
 import Foundation
-import IssueReporting
 import Stripe_Balance_Live
 import Stripe_Balance_Transactions_Live
 import Stripe_Billing_Live
