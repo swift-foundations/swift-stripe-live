@@ -8,7 +8,7 @@
 import Clocks_Dependency
 import Dependencies
 import Dependencies_Test_Support
-import EnvironmentVariables
+import ServerFoundationEnvVars
 import Foundation
 import IssueReporting
 import Stripe_Customers_Live
