@@ -219,7 +219,10 @@ extension Target.Dependency {
         .product(name: "ServerFoundation", package: "swift-server-foundation")
     }
     static var authenticating: Self {
-        .product(name: "Authenticating", package: "swift-url-routing")
+        .product(name: "Authentication Foundation Integration", package: "swift-url-routing-authentication")
+    }
+    static var urlRouting: Self {
+        .product(name: "URLRouting", package: "swift-url-routing")
     }
     static var clocksDependency: Self {
         .product(name: "Clocks Dependency", package: "swift-dependencies")
@@ -280,6 +283,7 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/swift-foundations/swift-url-routing.git", branch: "main"),
+        .package(url: "https://github.com/swift-foundations/swift-url-routing-authentication.git", branch: "main"),
         .package(url: "https://github.com/swift-foundations/swift-server-foundation.git", branch: "main"),
         .package(url: "https://github.com/swift-standards/swift-stripe-types.git", branch: "main"),
         .package(
@@ -294,6 +298,7 @@ let package = Package(
             dependencies: [
                 .serverFoundation,
                 .authenticating,
+                .urlRouting,
                 .clocksDependency,
             ]
         ),

@@ -5,7 +5,7 @@
 //  Created by Coen ten Thije Boonkkamp on 05/01/2025.
 //
 
-import Authenticating
+import Authentication_Foundation_Integration
 import Foundation
 import URLRouting
 
@@ -25,8 +25,8 @@ extension Authenticated where APIRouter: Sendable {
     public init(
         router: APIRouter,
         buildClient:
-            @escaping @Sendable (@escaping @Sendable (API) throws -> URLRequest) -> Client
-    ) throws where Auth == BearerAuth, AuthRouter == StripeAuthRouter {
+            @escaping @Sendable (@escaping @Sendable (API) throws -> URLRequest) -> Consumer
+    ) throws where Credential == BearerAuth, CredentialRouter == StripeAuthRouter {
         @Dependency(\.envVars.stripe.baseUrl) var baseUrl
         @Dependency(\.envVars.stripe.secretKey) var secretKey
 
@@ -56,8 +56,8 @@ extension Authenticated where APIRouter: Sendable {
         buildClient:
             @escaping @Sendable (
                 _ makeRequest: @escaping @Sendable (_ route: API) throws -> URLRequest
-            ) -> Client
-    ) throws -> Self where Auth == BearerAuth, AuthRouter == StripeAuthRouter {
+            ) -> Consumer
+    ) throws -> Self where Credential == BearerAuth, CredentialRouter == StripeAuthRouter {
         try .init(
             router: router,
             buildClient: { buildClient($0) }
@@ -67,8 +67,8 @@ extension Authenticated where APIRouter: Sendable {
 
 extension Authenticated where APIRouter: Dependency.Key, APIRouter.Value == APIRouter {
     package init(
-        buildClient: @escaping @Sendable () -> Client
-    ) throws where Auth == BearerAuth, AuthRouter == StripeAuthRouter {
+        buildClient: @escaping @Sendable () -> Consumer
+    ) throws where Credential == BearerAuth, CredentialRouter == StripeAuthRouter {
         @Dependency(APIRouter.self) var router
         self = try .fromEnvironmentVariables(
             router: router
@@ -81,8 +81,8 @@ extension Authenticated where APIRouter: Dependency.Key, APIRouter.Value == APIR
         _ buildClient:
             @escaping @Sendable (
                 _ makeRequest: @escaping @Sendable (_ route: API) throws -> URLRequest
-            ) -> Client
-    ) throws where Auth == BearerAuth, AuthRouter == StripeAuthRouter {
+            ) -> Consumer
+    ) throws where Credential == BearerAuth, CredentialRouter == StripeAuthRouter {
         @Dependency(APIRouter.self) var router
         self = try .fromEnvironmentVariables(
             router: router,
