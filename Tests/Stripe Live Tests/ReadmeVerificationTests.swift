@@ -5,12 +5,11 @@
 //  Verifies that all code examples in README.md compile and work correctly.
 //
 
-import Clocks_Dependency
+import Clocks_Dependencies
 import Dependencies
 import Dependencies_Test_Support
 import ServerFoundationEnvVars
 import Foundation
-import IssueReporting
 import Stripe_Billing_Live
 import Stripe_Customers_Live
 import Stripe_Live_Shared

@@ -5,7 +5,7 @@
 //  Extreme tests to trigger actual 429 errors
 //
 
-import Clocks_Dependency
+import Clocks_Dependencies
 import Dependencies
 import Dependencies_Test_Support
 import ServerFoundationEnvVars

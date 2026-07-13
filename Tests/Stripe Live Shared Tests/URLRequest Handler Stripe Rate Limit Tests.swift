@@ -5,7 +5,7 @@
 //  Created by Coen ten Thije Boonkkamp on 04/08/2025.
 //
 
-import Clocks_Dependency
+import Clocks_Dependencies
 import Dependencies
 import Dependencies_Test_Support
 import Foundation

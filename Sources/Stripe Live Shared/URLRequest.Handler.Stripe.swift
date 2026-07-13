@@ -6,7 +6,7 @@
 ////
 //
 
-import Clocks_Dependency
+import Clocks_Dependencies
 import Dependencies
 import Foundation
 import ServerFoundation

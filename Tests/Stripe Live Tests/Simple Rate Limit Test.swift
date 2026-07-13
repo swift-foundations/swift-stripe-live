@@ -5,7 +5,7 @@
 //  Simple test to verify rate limiting works
 //
 
-import Clocks_Dependency
+import Clocks_Dependencies
 import Dependencies
 import Dependencies_Test_Support
 import ServerFoundationEnvVars
