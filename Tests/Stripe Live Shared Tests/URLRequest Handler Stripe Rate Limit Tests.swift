@@ -9,7 +9,9 @@ import Clocks_Dependencies
 import Dependencies
 import Dependencies_Test_Support
 import Foundation
-import ServerFoundation
+import URLRequestHandler
+import Environment_Dependencies
+import Throttling_Dependencies
 import Stripe_Live_Shared
 import Testing
 

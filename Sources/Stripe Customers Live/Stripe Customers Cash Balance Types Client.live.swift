@@ -1,3 +1,4 @@
+import Foundation
 import Dependencies
 import Stripe_Customers_Types
 //

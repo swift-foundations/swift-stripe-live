@@ -4,6 +4,7 @@
 //
 //  Created by Coen ten Thije Boonkkamp on 04/01/2025.
 //
+import Foundation
 import Stripe_Live_Shared
 import Stripe_Payment_Intents_Types
 

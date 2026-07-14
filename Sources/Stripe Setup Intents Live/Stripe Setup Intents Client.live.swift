@@ -1,3 +1,4 @@
+import Foundation
 import Dependencies
 import Stripe_Live_Shared
 import Stripe_Setup_Intents_Types

@@ -1,3 +1,4 @@
+import Foundation
 import Stripe_Customer_Session_Types
 import Stripe_Live_Shared
 

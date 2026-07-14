@@ -1,3 +1,4 @@
+import Foundation
 import Stripe_Billing_Types
 //
 //  File.swift

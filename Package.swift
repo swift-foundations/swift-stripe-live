@@ -215,8 +215,17 @@ extension Target.Dependency {
 }
 
 extension Target.Dependency {
-    static var serverFoundation: Self {
-        .product(name: "ServerFoundation", package: "swift-server-foundation")
+    static var urlRequestHandler: Self {
+        .product(name: "URLRequestHandler", package: "swift-urlrequest-handler")
+    }
+    static var environmentDependencies: Self {
+        .product(name: "Environment Dependencies", package: "swift-environment-dependencies")
+    }
+    static var emailAddress: Self {
+        .product(name: "EmailAddress", package: "swift-emailaddress")
+    }
+    static var throttlingDependencies: Self {
+        .product(name: "Throttling Dependencies", package: "swift-throttling-dependencies")
     }
     static var authenticating: Self {
         .product(name: "Authentication Foundation Integration", package: "swift-url-routing-authentication")
@@ -284,7 +293,10 @@ let package = Package(
     dependencies: [
         .package(url: "https://github.com/swift-foundations/swift-url-routing.git", branch: "main"),
         .package(url: "https://github.com/swift-foundations/swift-url-routing-authentication.git", branch: "main"),
-        .package(url: "https://github.com/swift-foundations/swift-server-foundation.git", branch: "main"),
+        .package(url: "https://github.com/swift-foundations/swift-urlrequest-handler.git", branch: "main"),
+        .package(url: "https://github.com/swift-foundations/swift-emailaddress.git", branch: "main"),
+        .package(url: "https://github.com/swift-foundations/swift-environment-dependencies.git", branch: "main"),
+        .package(url: "https://github.com/swift-foundations/swift-throttling-dependencies.git", branch: "main"),
         .package(url: "https://github.com/swift-standards/swift-stripe-types.git", branch: "main"),
         .package(url: "https://github.com/swift-foundations/swift-dependencies.git", branch: "main"),
         .package(url: "https://github.com/swift-foundations/swift-clocks-dependencies.git", branch: "main"),
@@ -293,7 +305,10 @@ let package = Package(
         .target(
             name: .stripeLiveShared,
             dependencies: [
-                .serverFoundation,
+                .urlRequestHandler,
+                .environmentDependencies,
+                .emailAddress,
+                .throttlingDependencies,
                 .authenticating,
                 .urlRouting,
                 .clocksDependency,
@@ -304,7 +319,9 @@ let package = Package(
             dependencies: [
                 .stripeTypes,
                 .stripeLiveShared,
-                .serverFoundation,
+                .urlRequestHandler,
+                .environmentDependencies,
+                .throttlingDependencies,
                 .stripeBalanceLive,
                 .stripeBalanceTransactionsLive,
                 .stripeChargesLive,
@@ -367,7 +384,9 @@ let package = Package(
             dependencies: [
                 .stripeBalanceTypes,
                 .stripeLiveShared,
-                .serverFoundation,
+                .urlRequestHandler,
+                .environmentDependencies,
+                .throttlingDependencies,
             ]
         ),
         .testTarget(
@@ -382,7 +401,9 @@ let package = Package(
             dependencies: [
                 .stripeBalanceTransactionsTypes,
                 .stripeLiveShared,
-                .serverFoundation,
+                .urlRequestHandler,
+                .environmentDependencies,
+                .throttlingDependencies,
             ]
         ),
         .testTarget(
@@ -397,7 +418,9 @@ let package = Package(
             dependencies: [
                 .stripeChargesTypes,
                 .stripeLiveShared,
-                .serverFoundation,
+                .urlRequestHandler,
+                .environmentDependencies,
+                .throttlingDependencies,
             ]
         ),
         .testTarget(
@@ -412,7 +435,9 @@ let package = Package(
             dependencies: [
                 .stripeCustomersTypes,
                 .stripeLiveShared,
-                .serverFoundation,
+                .urlRequestHandler,
+                .environmentDependencies,
+                .throttlingDependencies,
             ]
         ),
         .testTarget(
@@ -428,7 +453,9 @@ let package = Package(
             dependencies: [
                 .stripeCustomerSessionTypes,
                 .stripeLiveShared,
-                .serverFoundation,
+                .urlRequestHandler,
+                .environmentDependencies,
+                .throttlingDependencies,
             ]
         ),
         .testTarget(
@@ -443,7 +470,9 @@ let package = Package(
             dependencies: [
                 .stripeDisputesTypes,
                 .stripeLiveShared,
-                .serverFoundation,
+                .urlRequestHandler,
+                .environmentDependencies,
+                .throttlingDependencies,
             ]
         ),
         .testTarget(
@@ -458,7 +487,9 @@ let package = Package(
             dependencies: [
                 .stripeEventsTypes,
                 .stripeLiveShared,
-                .serverFoundation,
+                .urlRequestHandler,
+                .environmentDependencies,
+                .throttlingDependencies,
             ]
         ),
         .testTarget(
@@ -473,7 +504,9 @@ let package = Package(
             dependencies: [
                 .stripeEventDestinationsTypes,
                 .stripeLiveShared,
-                .serverFoundation,
+                .urlRequestHandler,
+                .environmentDependencies,
+                .throttlingDependencies,
             ]
         ),
         .testTarget(
@@ -488,7 +521,9 @@ let package = Package(
             dependencies: [
                 .stripeFilesTypes,
                 .stripeLiveShared,
-                .serverFoundation,
+                .urlRequestHandler,
+                .environmentDependencies,
+                .throttlingDependencies,
             ]
         ),
         .testTarget(
@@ -503,7 +538,9 @@ let package = Package(
             dependencies: [
                 .stripeFileLinksTypes,
                 .stripeLiveShared,
-                .serverFoundation,
+                .urlRequestHandler,
+                .environmentDependencies,
+                .throttlingDependencies,
             ]
         ),
         .testTarget(
@@ -518,7 +555,9 @@ let package = Package(
             dependencies: [
                 .stripeMandatesTypes,
                 .stripeLiveShared,
-                .serverFoundation,
+                .urlRequestHandler,
+                .environmentDependencies,
+                .throttlingDependencies,
             ]
         ),
         .testTarget(
@@ -533,7 +572,9 @@ let package = Package(
             dependencies: [
                 .stripePaymentIntentsTypes,
                 .stripeLiveShared,
-                .serverFoundation,
+                .urlRequestHandler,
+                .environmentDependencies,
+                .throttlingDependencies,
             ]
         ),
         .testTarget(
@@ -548,7 +589,9 @@ let package = Package(
             dependencies: [
                 .stripeSetupIntentsTypes,
                 .stripeLiveShared,
-                .serverFoundation,
+                .urlRequestHandler,
+                .environmentDependencies,
+                .throttlingDependencies,
             ]
         ),
         .testTarget(
@@ -563,7 +606,9 @@ let package = Package(
             dependencies: [
                 .stripeSetupAttemptsTypes,
                 .stripeLiveShared,
-                .serverFoundation,
+                .urlRequestHandler,
+                .environmentDependencies,
+                .throttlingDependencies,
             ]
         ),
         .testTarget(
@@ -578,7 +623,9 @@ let package = Package(
             dependencies: [
                 .stripePayoutsTypes,
                 .stripeLiveShared,
-                .serverFoundation,
+                .urlRequestHandler,
+                .environmentDependencies,
+                .throttlingDependencies,
             ]
         ),
         .testTarget(
@@ -593,7 +640,9 @@ let package = Package(
             dependencies: [
                 .stripeRefundsTypes,
                 .stripeLiveShared,
-                .serverFoundation,
+                .urlRequestHandler,
+                .environmentDependencies,
+                .throttlingDependencies,
             ]
         ),
         .testTarget(
@@ -608,7 +657,9 @@ let package = Package(
             dependencies: [
                 .stripeConfirmationTokenTypes,
                 .stripeLiveShared,
-                .serverFoundation,
+                .urlRequestHandler,
+                .environmentDependencies,
+                .throttlingDependencies,
             ]
         ),
         .testTarget(
@@ -623,7 +674,9 @@ let package = Package(
             dependencies: [
                 .stripeTokensTypes,
                 .stripeLiveShared,
-                .serverFoundation,
+                .urlRequestHandler,
+                .environmentDependencies,
+                .throttlingDependencies,
             ]
         ),
         .testTarget(
@@ -638,7 +691,9 @@ let package = Package(
             dependencies: [
                 .stripePaymentMethodsTypes,
                 .stripeLiveShared,
-                .serverFoundation,
+                .urlRequestHandler,
+                .environmentDependencies,
+                .throttlingDependencies,
             ]
         ),
         .testTarget(
@@ -653,7 +708,9 @@ let package = Package(
             dependencies: [
                 .stripeProductsTypes,
                 .stripeLiveShared,
-                .serverFoundation,
+                .urlRequestHandler,
+                .environmentDependencies,
+                .throttlingDependencies,
             ]
         ),
         .testTarget(
@@ -669,7 +726,9 @@ let package = Package(
             dependencies: [
                 .stripeCheckoutTypes,
                 .stripeLiveShared,
-                .serverFoundation,
+                .urlRequestHandler,
+                .environmentDependencies,
+                .throttlingDependencies,
             ]
         ),
         .testTarget(
@@ -684,7 +743,9 @@ let package = Package(
             dependencies: [
                 .stripePaymentLinkTypes,
                 .stripeLiveShared,
-                .serverFoundation,
+                .urlRequestHandler,
+                .environmentDependencies,
+                .throttlingDependencies,
             ]
         ),
         .testTarget(
@@ -699,7 +760,9 @@ let package = Package(
             dependencies: [
                 .stripeBillingTypes,
                 .stripeLiveShared,
-                .serverFoundation,
+                .urlRequestHandler,
+                .environmentDependencies,
+                .throttlingDependencies,
             ]
         ),
         .testTarget(
@@ -714,7 +777,9 @@ let package = Package(
             dependencies: [
                 .stripeCapitalTypes,
                 .stripeLiveShared,
-                .serverFoundation,
+                .urlRequestHandler,
+                .environmentDependencies,
+                .throttlingDependencies,
             ]
         ),
         .testTarget(
@@ -729,7 +794,9 @@ let package = Package(
             dependencies: [
                 .stripeConnectTypes,
                 .stripeLiveShared,
-                .serverFoundation,
+                .urlRequestHandler,
+                .environmentDependencies,
+                .throttlingDependencies,
             ]
         ),
         .testTarget(
@@ -744,7 +811,9 @@ let package = Package(
             dependencies: [
                 .stripeFraudTypes,
                 .stripeLiveShared,
-                .serverFoundation,
+                .urlRequestHandler,
+                .environmentDependencies,
+                .throttlingDependencies,
             ]
         ),
         .testTarget(
@@ -759,7 +828,9 @@ let package = Package(
             dependencies: [
                 .stripeIssuingTypes,
                 .stripeLiveShared,
-                .serverFoundation,
+                .urlRequestHandler,
+                .environmentDependencies,
+                .throttlingDependencies,
             ]
         ),
         .testTarget(
@@ -774,7 +845,9 @@ let package = Package(
             dependencies: [
                 .stripeTerminalTypes,
                 .stripeLiveShared,
-                .serverFoundation,
+                .urlRequestHandler,
+                .environmentDependencies,
+                .throttlingDependencies,
             ]
         ),
         .testTarget(
@@ -789,7 +862,9 @@ let package = Package(
             dependencies: [
                 .stripeTreasuryTypes,
                 .stripeLiveShared,
-                .serverFoundation,
+                .urlRequestHandler,
+                .environmentDependencies,
+                .throttlingDependencies,
             ]
         ),
         .testTarget(
@@ -804,7 +879,9 @@ let package = Package(
             dependencies: [
                 .stripeEntitlementsTypes,
                 .stripeLiveShared,
-                .serverFoundation,
+                .urlRequestHandler,
+                .environmentDependencies,
+                .throttlingDependencies,
             ]
         ),
         .testTarget(
@@ -819,7 +896,9 @@ let package = Package(
             dependencies: [
                 .stripeSigmaTypes,
                 .stripeLiveShared,
-                .serverFoundation,
+                .urlRequestHandler,
+                .environmentDependencies,
+                .throttlingDependencies,
             ]
         ),
         .testTarget(
@@ -834,7 +913,9 @@ let package = Package(
             dependencies: [
                 .stripeReportingTypes,
                 .stripeLiveShared,
-                .serverFoundation,
+                .urlRequestHandler,
+                .environmentDependencies,
+                .throttlingDependencies,
             ]
         ),
         .testTarget(
@@ -849,7 +930,9 @@ let package = Package(
             dependencies: [
                 .stripeFinancialConnectionsTypes,
                 .stripeLiveShared,
-                .serverFoundation,
+                .urlRequestHandler,
+                .environmentDependencies,
+                .throttlingDependencies,
             ]
         ),
         .testTarget(
@@ -864,7 +947,9 @@ let package = Package(
             dependencies: [
                 .stripeTaxTypes,
                 .stripeLiveShared,
-                .serverFoundation,
+                .urlRequestHandler,
+                .environmentDependencies,
+                .throttlingDependencies,
             ]
         ),
         .testTarget(
@@ -879,7 +964,9 @@ let package = Package(
             dependencies: [
                 .stripeIdentityTypes,
                 .stripeLiveShared,
-                .serverFoundation,
+                .urlRequestHandler,
+                .environmentDependencies,
+                .throttlingDependencies,
             ]
         ),
         .testTarget(
@@ -894,7 +981,9 @@ let package = Package(
             dependencies: [
                 .stripeCryptoTypes,
                 .stripeLiveShared,
-                .serverFoundation,
+                .urlRequestHandler,
+                .environmentDependencies,
+                .throttlingDependencies,
             ]
         ),
         .testTarget(
@@ -909,7 +998,9 @@ let package = Package(
             dependencies: [
                 .stripeClimateTypes,
                 .stripeLiveShared,
-                .serverFoundation,
+                .urlRequestHandler,
+                .environmentDependencies,
+                .throttlingDependencies,
             ]
         ),
         .testTarget(
@@ -924,7 +1015,9 @@ let package = Package(
             dependencies: [
                 .stripeForwardingTypes,
                 .stripeLiveShared,
-                .serverFoundation,
+                .urlRequestHandler,
+                .environmentDependencies,
+                .throttlingDependencies,
             ]
         ),
         .testTarget(
@@ -939,7 +1032,9 @@ let package = Package(
             dependencies: [
                 .stripeWebhooksTypes,
                 .stripeLiveShared,
-                .serverFoundation,
+                .urlRequestHandler,
+                .environmentDependencies,
+                .throttlingDependencies,
             ]
         ),
         .testTarget(

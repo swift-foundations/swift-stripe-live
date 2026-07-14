@@ -6,7 +6,9 @@
 //
 
 @_exported import Authentication_Foundation_Integration
-@_exported import ServerFoundation
+@_exported import Environment_Dependencies
+@_exported import Throttling_Dependencies
+@_exported import URLRequestHandler
 
 #if canImport(FoundationNetworking)
     @_exported import FoundationNetworking

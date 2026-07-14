@@ -1,3 +1,4 @@
+import Foundation
 import Dependencies
 import Stripe_Billing_Types
 import Stripe_Live_Shared

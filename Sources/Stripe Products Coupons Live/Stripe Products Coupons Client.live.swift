@@ -1,3 +1,4 @@
+import Foundation
 import Dependencies
 //
 //  Stripe Products Coupons Client.live.swift

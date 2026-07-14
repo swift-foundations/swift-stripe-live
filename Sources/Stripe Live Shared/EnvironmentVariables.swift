@@ -7,8 +7,8 @@
 
 import Dependencies
 import Foundation
-import ServerFoundation
-import ServerFoundationEnvVars
+import EmailAddress
+import Environment_Dependencies
 
 extension EnvironmentVariables {
 

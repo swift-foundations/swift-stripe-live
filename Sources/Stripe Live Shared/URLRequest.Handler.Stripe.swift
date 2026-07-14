@@ -9,7 +9,8 @@
 import Clocks_Dependencies
 import Dependencies
 import Foundation
-import ServerFoundation
+import Throttling_Dependencies
+import URLRequestHandler
 
 // Note: Throttling is imported via ServerFoundation's @_exported import
 

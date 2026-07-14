@@ -1,3 +1,4 @@
+import Foundation
 import Dependencies
 import Stripe_Disputes_Types
 import Stripe_Live_Shared

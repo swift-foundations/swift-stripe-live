@@ -1,3 +1,4 @@
+import Foundation
 import Stripe_Customers_Types
 //
 //  Customers Client.live.swift

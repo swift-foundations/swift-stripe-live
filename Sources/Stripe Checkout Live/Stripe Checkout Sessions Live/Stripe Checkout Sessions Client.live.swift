@@ -1,3 +1,4 @@
+import Foundation
 import Stripe_Checkout_Types
 import Stripe_Live_Shared
 

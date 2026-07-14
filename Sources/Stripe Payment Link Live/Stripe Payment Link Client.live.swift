@@ -1,3 +1,4 @@
+import Foundation
 import Stripe_Live_Shared
 import Stripe_Payment_Link_Types
 

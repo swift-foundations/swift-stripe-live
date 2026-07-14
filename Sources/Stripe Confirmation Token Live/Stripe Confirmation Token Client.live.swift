@@ -1,3 +1,4 @@
+import Foundation
 import Dependencies
 import Stripe_Confirmation_Token_Types
 import Stripe_Live_Shared

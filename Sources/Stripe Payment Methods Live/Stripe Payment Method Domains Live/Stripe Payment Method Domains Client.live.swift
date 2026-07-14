@@ -1,3 +1,4 @@
+import Foundation
 import Dependencies
 //
 //  Stripe Payment Method Domains Client.live.swift

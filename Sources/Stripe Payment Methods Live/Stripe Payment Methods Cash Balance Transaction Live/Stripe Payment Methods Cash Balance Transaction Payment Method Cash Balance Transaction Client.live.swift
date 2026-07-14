@@ -1,3 +1,4 @@
+import Foundation
 extension Stripe.PaymentMethods.PaymentMethods.Client {
     public static func live(
         makeRequest:
