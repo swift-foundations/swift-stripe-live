@@ -14,19 +14,19 @@ import Stripe_Products_Live
 import Testing
 
 @Suite(
-    "Payment Link Client Tests",
+
     .dependency(\.projectRoot, .stripe),
     .dependency(\.envVars, .development),
     .dependency(\.date, .init(Date.init)),
     .dependency(\.clock, Clock.Any(Clock.Continuous()))
 )
-struct PaymentLinkClientTests {
+struct Test {
     @Dependency(Stripe.PaymentLinks.self) var client
     @Dependency(Stripe.Products.Products.self) var products
     @Dependency(Stripe.Products.Prices.self) var prices
 
-    @Test("Should successfully create a payment link")
-    func testCreatePaymentLink() async throws {
+    @Test
+    func `Should successfully create a payment link`() async throws {
         // Create test product and price
         let product = try await products.client.create(
             .init(
@@ -66,8 +66,8 @@ struct PaymentLinkClientTests {
         // Cleanup
         _ = try await products.client.update(product.id, .init(active: false))
     }
-    @Test("Should successfully retrieve a payment link")
-    func testRetrievePaymentLink() async throws {
+    @Test
+    func `Should successfully retrieve a payment link`() async throws {
 
         // Create test product and price
         let product = try await products.client.create(
@@ -103,8 +103,8 @@ struct PaymentLinkClientTests {
         // Cleanup
         _ = try await products.client.update(product.id, .init(active: false))
     }
-    @Test("Should successfully update a payment link")
-    func testUpdatePaymentLink() async throws {
+    @Test
+    func `Should successfully update a payment link`() async throws {
 
         // Create test product and price
         let product = try await products.client.create(
@@ -153,8 +153,8 @@ struct PaymentLinkClientTests {
         // Cleanup
         _ = try await products.client.update(product.id, .init(active: false))
     }
-    @Test("Should successfully list payment links")
-    func testListPaymentLinks() async throws {
+    @Test
+    func `Should successfully list payment links`() async throws {
 
         // Create test product and prices
         let product = try await products.client.create(
@@ -204,8 +204,8 @@ struct PaymentLinkClientTests {
         // Cleanup
         _ = try await products.client.update(product.id, .init(active: false))
     }
-    @Test("Should successfully retrieve line items")
-    func testListLineItems() async throws {
+    @Test
+    func `Should successfully retrieve line items`() async throws {
 
         // Create test product and prices
         let product = try await products.client.create(
@@ -256,8 +256,8 @@ struct PaymentLinkClientTests {
         // Cleanup
         _ = try await products.client.update(product.id, .init(active: false))
     }
-    @Test("Should handle payment link workflow")
-    func testPaymentLinkWorkflow() async throws {
+    @Test
+    func `Should handle payment link workflow`() async throws {
 
         // Create test product and price
         let product = try await products.client.create(

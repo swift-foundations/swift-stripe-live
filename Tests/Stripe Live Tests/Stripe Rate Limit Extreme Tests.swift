@@ -15,18 +15,18 @@ import Stripe_Products_Live
 import Testing
 
 @Suite(
-    "Stripe Rate Limit Extreme Tests",
+
     .dependency(\.projectRoot, .stripe),
     .dependency(\.envVars, .development),
     .dependency(\.date, .init(Date.init)),
     .dependency(\.clock, Clock.Any(Clock.Continuous()))
 )
-struct StripeRateLimitExtremeTests {
+struct Test {
     @Dependency(\.date) var date
     @Dependency(\.envVars) var envVars
 
-    @Test("Extreme concurrent load to trigger 429s")
-    func testExtremeConcurrentLoad() async throws {
+    @Test
+    func `Extreme concurrent load to trigger 429s`() async throws {
         print("\n=== EXTREME CONCURRENT LOAD TEST ===")
         print("Attempting 100 concurrent requests")
         print("This should definitely exceed 25 req/sec")
@@ -101,8 +101,8 @@ struct StripeRateLimitExtremeTests {
         _ = try? await client.client.delete(product.id)
     }
 
-    @Test("Test our rate limiter prevents 429s under extreme load")
-    func testOurRateLimiterPrevents429s() async throws {
+    @Test
+    func `Test our rate limiter prevents 429s under extreme load`() async throws {
         print("\n=== TESTING OUR RATE LIMITER UNDER EXTREME LOAD ===")
         print("100 concurrent requests through our rate limiter")
         print("====================================================\n")

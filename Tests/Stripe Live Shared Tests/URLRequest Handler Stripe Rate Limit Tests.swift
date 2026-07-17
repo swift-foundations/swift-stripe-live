@@ -36,12 +36,12 @@ actor TestTracker {
 }
 
 @Suite(
-    "URLRequest.Handler.Stripe Rate Limit Tests"
-)
-struct URLRequestHandlerStripeRateLimitTests {
 
-    @Test("Stripe handler should be configured with rate limiting")
-    func testStripeHandlerConfiguration() async throws {
+)
+struct Test {
+
+    @Test
+    func `Stripe handler should be configured with rate limiting`() async throws {
         // Verify that the Stripe handler is properly configured
         // Direct test of the handler configuration
         let handler = URLRequest.Handler.Stripe.default()
@@ -49,8 +49,8 @@ struct URLRequestHandlerStripeRateLimitTests {
         // The actual rate limiting tests would require more setup
     }
 
-    @Test("Should handle concurrent requests without failing")
-    func testConcurrentRequests() async throws {
+    @Test
+    func `Should handle concurrent requests without failing`() async throws {
         // This test verifies that the rate limiting implementation doesn't break concurrent requests
         var successCount = 0
 
@@ -93,8 +93,8 @@ struct URLRequestHandlerStripeRateLimitTests {
         #expect(successCount == 10, "All requests should succeed")
     }
 
-    @Test("Should handle 429 responses with retry")
-    func test429ResponseHandling() async throws {
+    @Test
+    func `Should handle 429 responses with retry`() async throws {
         // Test that the handler is configured for retry
         let handler = URLRequest.Handler.Stripe.default()
         #expect(handler.debug == false, "Handler should be configured for production")
@@ -104,8 +104,8 @@ struct URLRequestHandlerStripeRateLimitTests {
         // but requires URLSession mocking which isn't straightforward
     }
 
-    @Test("Rate limiter prevents request bursts")
-    func testRateLimiterPreventssBursts() async throws {
+    @Test
+    func `Rate limiter prevents request bursts`() async throws {
         // Test that rate limiter spaces out requests
         let tracker = TestTracker()
         let testClock = Clock.Test()
@@ -151,8 +151,8 @@ struct URLRequestHandlerStripeRateLimitTests {
         }
     }
 
-    @Test("Jitter adds randomness to delay values")
-    func testJitterAddsRandomness() async throws {
+    @Test
+    func `Jitter adds randomness to delay values`() async throws {
         // Test that the jitter function produces different values
         // This is a conceptual test since the actual jitter logic is in the handler
 
@@ -164,8 +164,8 @@ struct URLRequestHandlerStripeRateLimitTests {
         // but the code coverage ensures the jitter paths are exercised
     }
 
-    @Test("Should handle different Stripe rate limit reasons")
-    func testStripeRateLimitReasons() async throws {
+    @Test
+    func `Should handle different Stripe rate limit reasons`() async throws {
         // Test that rate limit reason handling is configured
         let handler = URLRequest.Handler.Stripe.default()
         #expect(handler.debug == false, "Handler should be configured for production")
@@ -179,8 +179,8 @@ struct URLRequestHandlerStripeRateLimitTests {
         // - endpoint-rate: 1.5x multiplier, exponential backoff
     }
 
-    @Test("Should include rate limit reason in error messages")
-    func testRateLimitReasonInErrors() async throws {
+    @Test
+    func `Should include rate limit reason in error messages`() async throws {
         // Test that rate limit reasons are included in error messages for debugging
         let handler = URLRequest.Handler.Stripe.default()
         #expect(handler.debug == false, "Handler should be configured for production")
@@ -191,8 +191,8 @@ struct URLRequestHandlerStripeRateLimitTests {
         // "Rate limit exceeded after 5 retries (reason: endpoint-rate)"
     }
 
-    @Test("Should use different rate limits for live vs test modes")
-    func testLiveVsTestRateLimits() async throws {
+    @Test
+    func `Should use different rate limits for live vs test modes`() async throws {
         // Test that live and test modes have different rate limit configurations
 
         // Test mode should use 1500/min (25 requests/sec)

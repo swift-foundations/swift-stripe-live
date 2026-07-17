@@ -15,7 +15,7 @@ import Stripe_Products_Live
 import Testing
 
 @Suite(
-    "Stripe Rate Limit Production Test",
+
     .dependency(\.projectRoot, .stripe),
     .dependency(\.envVars, .development),
     .dependency(\.date, .init(Date.init)),
@@ -23,8 +23,8 @@ import Testing
 )
 struct StripeRateLimitProductionTest {
 
-    @Test("Production-like rate limiting test")
-    func testProductionRateLimiting() async throws {
+    @Test
+    func `Production-like rate limiting test`() async throws {
         print("\n=== PRODUCTION-LIKE RATE LIMITING TEST ===")
         print("Making 30 rapid requests with real dependencies")
         print("==========================================\n")

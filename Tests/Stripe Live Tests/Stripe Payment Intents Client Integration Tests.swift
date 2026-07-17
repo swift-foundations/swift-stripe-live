@@ -16,15 +16,15 @@ import Stripe_Payment_Intents_Live
 import Testing
 
 @Suite(
-    "Payment Intents Client Tests",
+
     .dependency(\.projectRoot, .stripe),
     .dependency(\.envVars, .development),
     .dependency(\.date, .init(Date.init)),
     .dependency(\.clock, Clock.Any(Clock.Continuous()))
 )
-struct PaymentIntentsClientTests {
-    @Test("Should successfully create a payment intent")
-    func testCreatePaymentIntent() async throws {
+struct Test {
+    @Test
+    func `Should successfully create a payment intent`() async throws {
         @Dependency(Stripe.PaymentIntents.self) var client
         @Dependency(Stripe.Customers.self) var customersClient
 
@@ -63,8 +63,8 @@ struct PaymentIntentsClientTests {
         _ = try await customersClient.client.delete(customer.id)
     }
 
-    @Test("Should successfully retrieve a payment intent")
-    func testRetrievePaymentIntent() async throws {
+    @Test
+    func `Should successfully retrieve a payment intent`() async throws {
         @Dependency(Stripe.PaymentIntents.self) var client
         @Dependency(Stripe.Customers.self) var customersClient
 
@@ -99,8 +99,8 @@ struct PaymentIntentsClientTests {
         _ = try await customersClient.client.delete(customer.id)
     }
 
-    @Test("Should successfully update a payment intent")
-    func testUpdatePaymentIntent() async throws {
+    @Test
+    func `Should successfully update a payment intent`() async throws {
         @Dependency(Stripe.PaymentIntents.self) var client
         @Dependency(Stripe.Customers.self) var customersClient
 
@@ -141,8 +141,8 @@ struct PaymentIntentsClientTests {
         _ = try await customersClient.client.delete(customer.id)
     }
 
-    @Test("Should successfully list payment intents")
-    func testListPaymentIntents() async throws {
+    @Test
+    func `Should successfully list payment intents`() async throws {
         @Dependency(Stripe.PaymentIntents.self) var client
         @Dependency(Stripe.Customers.self) var customersClient
 
@@ -185,8 +185,8 @@ struct PaymentIntentsClientTests {
         _ = try await customersClient.client.delete(customer.id)
     }
 
-    @Test("Should successfully cancel a payment intent")
-    func testCancelPaymentIntent() async throws {
+    @Test
+    func `Should successfully cancel a payment intent`() async throws {
         @Dependency(Stripe.PaymentIntents.self) var client
         @Dependency(Stripe.Customers.self) var customersClient
 
@@ -226,8 +226,8 @@ struct PaymentIntentsClientTests {
         _ = try await customersClient.client.delete(customer.id)
     }
 
-    @Test("Should successfully confirm a payment intent")
-    func testConfirmPaymentIntent() async throws {
+    @Test
+    func `Should successfully confirm a payment intent`() async throws {
         @Dependency(Stripe.PaymentIntents.self) var client
         @Dependency(Stripe.Customers.self) var customersClient
 
@@ -269,8 +269,8 @@ struct PaymentIntentsClientTests {
         _ = try await customersClient.client.delete(customer.id)
     }
 
-    @Test("Should successfully capture a payment intent")
-    func testCapturePaymentIntent() async throws {
+    @Test
+    func `Should successfully capture a payment intent`() async throws {
         @Dependency(Stripe.PaymentIntents.self) var client
         @Dependency(Stripe.Customers.self) var customersClient
 
@@ -326,8 +326,8 @@ struct PaymentIntentsClientTests {
         _ = try await customersClient.client.delete(customer.id)
     }
 
-    @Test("Should partially capture a payment intent")
-    func testPartialCapturePaymentIntent() async throws {
+    @Test
+    func `Should partially capture a payment intent`() async throws {
         @Dependency(Stripe.PaymentIntents.self) var client
         @Dependency(Stripe.Customers.self) var customersClient
 
@@ -384,8 +384,8 @@ struct PaymentIntentsClientTests {
         _ = try await customersClient.client.delete(customer.id)
     }
 
-    @Test("Should successfully search payment intents")
-    func testSearchPaymentIntents() async throws {
+    @Test
+    func `Should successfully search payment intents`() async throws {
         @Dependency(Stripe.PaymentIntents.self) var client
         @Dependency(Stripe.Customers.self) var customersClient
 
@@ -425,8 +425,8 @@ struct PaymentIntentsClientTests {
         _ = try await customersClient.client.delete(customer.id)
     }
 
-    @Test("Should handle payment intent workflow")
-    func testPaymentIntentWorkflow() async throws {
+    @Test
+    func `Should handle payment intent workflow`() async throws {
         @Dependency(Stripe.PaymentIntents.self) var client
         @Dependency(Stripe.Customers.self) var customersClient
 

@@ -16,7 +16,7 @@ import Testing
 import Throttling
 
 @Suite(
-    "Stripe Rate Limit Within Limits Tests",
+
     .dependency(\.projectRoot, .stripe),
     .dependency(\.envVars, .development),
     .dependency(\.date, .init(Date.init)),
@@ -40,10 +40,10 @@ import Throttling
     ),
     .serialized
 )
-struct StripeRateLimitWithinLimitsTests {
+struct Test {
 
-    @Test("Requests within limits should not be delayed")
-    func testRequestsWithinLimits() async throws {
+    @Test
+    func `Requests within limits should not be delayed`() async throws {
         @Dependency(Stripe.Products.Products.self) var client
         @Dependency(\.clock) var clock
 
@@ -110,8 +110,8 @@ struct StripeRateLimitWithinLimitsTests {
         )
     }
 
-    @Test("Compare with and without rate limiting")
-    func testCompareWithWithoutRateLimiting() async throws {
+    @Test
+    func `Compare with and without rate limiting`() async throws {
         print("\n=== Comparing With and Without Rate Limiting ===")
 
         // First, let's make requests using our rate-limited handler
@@ -139,8 +139,8 @@ struct StripeRateLimitWithinLimitsTests {
         print("=================================================\n")
     }
 
-    @Test("Test actual Stripe 429 response without rate limiting")
-    func testActual429Response() async throws {
+    @Test
+    func `Test actual Stripe 429 response without rate limiting`() async throws {
         print("\n=== Testing Direct Stripe API Without Rate Limiting ===")
         print("This test bypasses our rate limiter to see actual 429 errors")
         print("========================================================\n")

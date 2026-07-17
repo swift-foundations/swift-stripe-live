@@ -11,8 +11,8 @@ import Throttling_Dependencies
 import Stripe_Products_Live
 import Testing
 
-@Test("Test Handler Decode Product")
-func testHandlerDecodeProduct() async throws {
+@Test
+func `Test Handler Decode Product`() async throws {
     let json = """
         {
           "id": "prod_Test",

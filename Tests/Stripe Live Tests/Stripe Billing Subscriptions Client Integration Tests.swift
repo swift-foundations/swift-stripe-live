@@ -17,15 +17,15 @@ import Stripe_Products_Live
 import Testing
 
 @Suite(
-    "Subscription Client Tests",
+
     .dependency(\.projectRoot, .stripe),
     .dependency(\.envVars, .development),
     .dependency(\.date, .init(Date.init)),
     .dependency(\.clock, Clock.Any(Clock.Continuous()))
 )
-struct SubscriptionClientTests {
-    @Test("Should successfully create a subscription")
-    func testCreateSubscription() async throws {
+struct Test {
+    @Test
+    func `Should successfully create a subscription`() async throws {
         @Dependency(Stripe.Billing.Subscriptions.self) var client
         @Dependency(Stripe.Customers.self) var customersClient
         @Dependency(Stripe.Products.Products.self) var productsClient
@@ -102,8 +102,8 @@ struct SubscriptionClientTests {
         _ = try await productsClient.client.update(product.id, .init(active: false))
     }
 
-    @Test("Should successfully retrieve a subscription")
-    func testRetrieveSubscription() async throws {
+    @Test
+    func `Should successfully retrieve a subscription`() async throws {
         @Dependency(Stripe.Billing.Subscriptions.self) var client
         @Dependency(Stripe.Customers.self) var customersClient
         @Dependency(Stripe.Products.Products.self) var productsClient
@@ -166,8 +166,8 @@ struct SubscriptionClientTests {
         _ = try await productsClient.client.update(product.id, .init(active: false))
     }
 
-    @Test("Should successfully update a subscription")
-    func testUpdateSubscription() async throws {
+    @Test
+    func `Should successfully update a subscription`() async throws {
         @Dependency(Stripe.Billing.Subscriptions.self) var client
         @Dependency(Stripe.Customers.self) var customersClient
         @Dependency(Stripe.Products.Products.self) var productsClient
@@ -237,8 +237,8 @@ struct SubscriptionClientTests {
         _ = try await productsClient.client.update(product.id, .init(active: false))
     }
 
-    @Test("Should successfully list subscriptions")
-    func testListSubscriptions() async throws {
+    @Test
+    func `Should successfully list subscriptions`() async throws {
         @Dependency(Stripe.Billing.Subscriptions.self) var client
         @Dependency(Stripe.Customers.self) var customersClient
         @Dependency(Stripe.Products.Products.self) var productsClient
@@ -320,8 +320,8 @@ struct SubscriptionClientTests {
         _ = try await productsClient.client.update(product.id, .init(active: false))
     }
     //
-    @Test("Should successfully cancel a subscription")
-    func testCancelSubscription() async throws {
+    @Test
+    func `Should successfully cancel a subscription`() async throws {
         @Dependency(Stripe.Billing.Subscriptions.self) var client
         @Dependency(Stripe.Customers.self) var customersClient
         @Dependency(Stripe.Products.Products.self) var productsClient
@@ -392,8 +392,8 @@ struct SubscriptionClientTests {
         _ = try await productsClient.client.update(product.id, .init(active: false))
     }
     //
-    @Test("Should successfully resume a subscription")
-    func testResumeSubscription() async throws {
+    @Test
+    func `Should successfully resume a subscription`() async throws {
         @Dependency(Stripe.Billing.Subscriptions.self) var client
         @Dependency(Stripe.Customers.self) var customersClient
         @Dependency(Stripe.Products.Products.self) var productsClient
@@ -469,8 +469,8 @@ struct SubscriptionClientTests {
         _ = try await productsClient.client.update(product.id, .init(active: false))
     }
     //
-    @Test("Should successfully search subscriptions")
-    func testSearchSubscriptions() async throws {
+    @Test
+    func `Should successfully search subscriptions`() async throws {
         @Dependency(Stripe.Billing.Subscriptions.self) var client
         @Dependency(Stripe.Customers.self) var customersClient
         @Dependency(Stripe.Products.Products.self) var productsClient
@@ -540,8 +540,8 @@ struct SubscriptionClientTests {
         _ = try await productsClient.client.update(product.id, .init(active: false))
     }
     //
-    @Test("Should handle subscription workflow")
-    func testSubscriptionWorkflow() async throws {
+    @Test
+    func `Should handle subscription workflow`() async throws {
         @Dependency(Stripe.Billing.Subscriptions.self) var client
         @Dependency(Stripe.Customers.self) var customersClient
         @Dependency(Stripe.Products.Products.self) var productsClient

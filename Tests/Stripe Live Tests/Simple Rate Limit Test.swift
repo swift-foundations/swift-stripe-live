@@ -15,7 +15,7 @@ import Stripe_Products_Live
 import Testing
 
 @Suite(
-    "Simple Rate Limit Test",
+
     .dependency(\.projectRoot, .stripe),
     .dependency(\.envVars, .development),
     .dependency(\.date, .init(Date.init)),
@@ -23,8 +23,8 @@ import Testing
 )
 struct SimpleRateLimitTest {
 
-    @Test("Rate limiter prevents 429 errors")
-    func testRateLimiterPrevents429s() async throws {
+    @Test
+    func `Rate limiter prevents 429 errors`() async throws {
         print("\n=== TESTING RATE LIMITER ===")
         print("Making 50 rapid requests through our rate limiter")
         print("============================\n")

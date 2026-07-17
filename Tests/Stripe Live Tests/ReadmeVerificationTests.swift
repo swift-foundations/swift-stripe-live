@@ -18,18 +18,18 @@ import Stripe_Products_Live
 import Testing
 
 @Suite(
-    "README Verification Tests",
+
     .dependency(\.projectRoot, .stripe),
     .dependency(\.envVars, .development),
     .dependency(\.date, .init(Date.init)),
     .dependency(\.clock, Clock.Any(Clock.Continuous()))
 )
-struct ReadmeVerificationTests {
+struct Test {
 
     // MARK: - Quick Start Examples
 
-    @Test("README Example: Basic Usage - Customer Creation (Lines 75-82)")
-    func testBasicUsageCustomerCreation() async throws {
+    @Test
+    func `README Example: Basic Usage - Customer Creation (Lines 75-82)`() async throws {
         // From README lines 75-82
         @Dependency(Stripe.Customers.self) var customersClient
 
@@ -49,8 +49,8 @@ struct ReadmeVerificationTests {
         _ = try await customersClient.client.delete(customer.id)
     }
 
-    @Test("README Example: Basic Usage - Payment Intent Creation (Lines 84-92)")
-    func testBasicUsagePaymentIntentCreation() async throws {
+    @Test
+    func `README Example: Basic Usage - Payment Intent Creation (Lines 84-92)`() async throws {
         // From README lines 84-92
         @Dependency(Stripe.Customers.self) var customersClient
         @Dependency(Stripe.PaymentIntents.self) var paymentIntentsClient
@@ -82,8 +82,8 @@ struct ReadmeVerificationTests {
         _ = try await customersClient.client.delete(customer.id)
     }
 
-    @Test("README Example: Subscription Management - Create Subscription (Lines 111-120)")
-    func testSubscriptionCreation() async throws {
+    @Test
+    func `README Example: Subscription Management - Create Subscription (Lines 111-120)`() async throws {
         // From README lines 111-120
         @Dependency(Stripe.Billing.Subscriptions.self) var subscriptionsClient
         @Dependency(Stripe.Customers.self) var customersClient
@@ -131,8 +131,8 @@ struct ReadmeVerificationTests {
         _ = try await productsClient.client.update(product.id, .init(active: false))
     }
 
-    @Test("README Example: Subscription Management - Update Subscription (Lines 122-128)")
-    func testSubscriptionUpdate() async throws {
+    @Test
+    func `README Example: Subscription Management - Update Subscription (Lines 122-128)`() async throws {
         // From README lines 122-128
         @Dependency(Stripe.Billing.Subscriptions.self) var subscriptionsClient
         @Dependency(Stripe.Customers.self) var customersClient
@@ -194,8 +194,8 @@ struct ReadmeVerificationTests {
         _ = try await productsClient.client.update(product.id, .init(active: false))
     }
 
-    @Test("README Example: Subscription Management - Cancel Subscription (Lines 130-134)")
-    func testSubscriptionCancellation() async throws {
+    @Test
+    func `README Example: Subscription Management - Cancel Subscription (Lines 130-134)`() async throws {
         // From README lines 130-134
         @Dependency(Stripe.Billing.Subscriptions.self) var subscriptionsClient
         @Dependency(Stripe.Customers.self) var customersClient
@@ -248,8 +248,8 @@ struct ReadmeVerificationTests {
 
     // MARK: - Architecture Examples
 
-    @Test("README Example: Live Client Implementation Pattern (Lines 194-216)")
-    func testLiveClientImplementationPattern() async throws {
+    @Test
+    func `README Example: Live Client Implementation Pattern (Lines 194-216)`() async throws {
         // From README lines 194-216
         // This test verifies the implementation pattern compiles
         @Dependency(Stripe.Customers.self) var client
@@ -274,8 +274,8 @@ struct ReadmeVerificationTests {
 
     // MARK: - Testing Examples
 
-    @Test("README Example: Testing with Dependencies (Lines 240-265)")
-    func testTestingExample() async throws {
+    @Test
+    func `README Example: Testing with Dependencies (Lines 240-265)`() async throws {
         // From README lines 240-265
         @Dependency(Stripe.Customers.self) var client
 

@@ -21,16 +21,16 @@ struct RequestTiming {
 }
 
 @Suite(
-    "Stripe Rate Limit Stress Tests",
+
     .dependency(\.projectRoot, .stripe),
     .dependency(\.envVars, .development),
     .dependency(\.date, .init(Date.init)),
     .dependency(\.clock, Clock.Any(Clock.Continuous()))
 )
-struct StripeRateLimitStressTests {
+struct Test {
 
-    @Test("Should handle exceeding Stripe's test mode limit (25 req/sec)")
-    func testExceedingStripeLimits() async throws {
+    @Test
+    func `Should handle exceeding Stripe's test mode limit (25 req/sec)`() async throws {
         @Dependency(Stripe.Products.Products.self) var client
         @Dependency(\.clock) var clock
 
@@ -139,8 +139,8 @@ struct StripeRateLimitStressTests {
         )
     }
 
-    @Test("Should handle concurrent bursts without 429 errors")
-    func testConcurrentBurstWithinLimits() async throws {
+    @Test
+    func `Should handle concurrent bursts without 429 errors`() async throws {
         print("\n=== Testing Concurrent Burst Handling ===")
 
         // Test with exactly 25 concurrent requests (at the limit)
@@ -203,8 +203,8 @@ struct StripeRateLimitStressTests {
         )
     }
 
-    @Test("Should demonstrate rate limiting behavior over time")
-    func testRateLimitingBehaviorOverTime() async throws {
+    @Test
+    func `Should demonstrate rate limiting behavior over time`() async throws {
         @Dependency(Stripe.Products.Products.self) var client
 
         print("\n=== Rate Limiting Behavior Over Time ===")

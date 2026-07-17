@@ -7,8 +7,8 @@ import Foundation
 import Stripe_Products_Types
 import Testing
 
-@Test("Test Exact JSON From Error")
-func testExactJSONFromError() throws {
+@Test
+func `Test Exact JSON From Error`() throws {
     // This is the exact JSON from the error message
     let json = """
         {

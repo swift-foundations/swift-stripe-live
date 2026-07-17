@@ -15,17 +15,17 @@ import Stripe_Products_Live
 import Testing
 
 @Suite(
-    "Stripe Rate Limiting Integration Tests",
+
     .dependency(\.projectRoot, .stripe),
     .dependency(\.envVars, .development),
     .dependency(\.date, .init(Date.init)),
     .dependency(\.clock, Clock.Any(Clock.Continuous())),
     .serialized
 )
-struct StripeRateLimitingIntegrationTests {
+struct Test {
 
-    @Test("Should handle rate limiting without 429 errors")
-    func testRateLimitingPrevents429Errors() async throws {
+    @Test
+    func `Should handle rate limiting without 429 errors`() async throws {
         @Dependency(Stripe.Products.Products.self) var client
         @Dependency(\.clock) var clock
 
@@ -98,8 +98,8 @@ struct StripeRateLimitingIntegrationTests {
         #expect(successCount == numberOfRequests, "All requests should succeed with rate limiting")
     }
 
-    @Test("Should introduce delays when approaching rate limit")
-    func testRateLimitingIntroducesDelays() async throws {
+    @Test
+    func `Should introduce delays when approaching rate limit`() async throws {
         @Dependency(Stripe.Products.Products.self) var client
         @Dependency(\.clock) var clock
 
@@ -138,8 +138,8 @@ struct StripeRateLimitingIntegrationTests {
         #expect(totalDuration < 10, "Requests should complete reasonably quickly")
     }
 
-    @Test("Should handle burst requests gracefully")
-    func testBurstRequestHandling() async throws {
+    @Test
+    func `Should handle burst requests gracefully`() async throws {
         print("\nTesting burst request handling...")
 
         // Create multiple products in parallel (burst)
