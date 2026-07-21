@@ -93,6 +93,7 @@ extension Authenticated where APIRouter: Dependency.Key, APIRouter.Value == APIR
 
 public struct StripeAuthRouter: ParserPrinter, Sendable {
     public typealias Input = URLRequestData
+    public typealias Buffer = URLRequestData
     public typealias Output = BearerAuth
     public typealias Failure = RFC_3986.URI.Routing.Error
     public typealias Body = Never
@@ -120,5 +121,11 @@ public struct StripeAuthRouter: ParserPrinter, Sendable {
         // Reverse order, mirroring the sequential combinator's printer.
         try BearerAuth.Router().print(output, into: &input)
         try stripeHeaders.print((), into: &input)
+    }
+
+    public borrowing func serialize(_ output: Output, into buffer: inout Input) throws(Failure) {
+        // Forward order — the serializer world appends in parse order.
+        try stripeHeaders.serialize((), into: &buffer)
+        try BearerAuth.Router().serialize(output, into: &buffer)
     }
 }
