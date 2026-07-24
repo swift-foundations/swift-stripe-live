@@ -227,8 +227,8 @@ extension Target.Dependency {
     static var throttlingDependencies: Self {
         .product(name: "Throttling Dependencies", package: "swift-throttling-dependencies")
     }
-    static var authenticating: Self {
-        .product(name: "Authentication Foundation Integration", package: "swift-url-routing-authentication")
+    static var urlRoutingFoundationIntegration: Self {
+        .product(name: "URL Routing Foundation Integration", package: "swift-url-routing")
     }
     static var urlRouting: Self {
         .product(name: "URLRouting", package: "swift-url-routing")
@@ -292,7 +292,6 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/swift-foundations/swift-url-routing.git", branch: "main"),
-        .package(url: "https://github.com/swift-foundations/swift-url-routing-authentication.git", branch: "main"),
         .package(url: "https://github.com/swift-foundations/swift-urlrequest-handler.git", branch: "main"),
         .package(url: "https://github.com/swift-foundations/swift-emailaddress.git", branch: "main"),
         .package(url: "https://github.com/swift-foundations/swift-environment-dependencies.git", branch: "main"),
@@ -309,9 +308,10 @@ let package = Package(
                 .environmentDependencies,
                 .emailAddress,
                 .throttlingDependencies,
-                .authenticating,
+                .urlRoutingFoundationIntegration,
                 .urlRouting,
                 .clocksDependency,
+                .product(name: "Dependencies", package: "swift-dependencies"),
             ]
         ),
         .target(

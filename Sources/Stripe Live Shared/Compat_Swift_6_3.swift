@@ -18,10 +18,11 @@
 //  ordinary path performs:
 //
 //    1. `Authentication.Client.base(url:credential:credentialRouter:)`
-//       (swift-url-routing-authentication, Authentication.Client.swift:104-118) —
+//       (swift-url-routing, Sources/URL Routing Foundation Integration/
+//       Authentication.Client.swift:102-119) —
 //       parse the base URL into request data, then print the credential into it.
 //    2. The credential and router the Stripe `Authenticated` wrapper supplies
-//       (`AuthenticatedClient.swift:43-49`) — `BearerAuth(token: secretKey)` printed
+//       (`AuthenticatedClient.swift:42-47`) — `RFC_6750.Bearer(token: secretKey)` printed
 //       by ``StripeAuthRouter``, which emits `Authorization: Bearer <key>`,
 //       `Stripe-Version: 2024-12-18.acacia`, and
 //       `Content-Type: application/x-www-form-urlencoded`.
@@ -125,9 +126,14 @@ extension Compat_Swift_6_3 {
         else { throw .invalidBaseURL(baseUrl.absoluteString) }
 
         // Step 2 — the credential the `Authenticated` wrapper builds.
-        let bearer: BearerAuth
+        let bearer: RFC_6750.Bearer
         do {
-            bearer = try BearerAuth(token: secretKey.rawValue)
+            // swift-linter:disable:next raw value access
+            // REASON: wire/env boundary extraction (ruling class 3, item-4 lead
+            // ruling 2026-07-23) — the EnvVars secret-key newtype is unwrapped
+            // exactly once here to construct the RFC 6750 credential, mirroring
+            // AuthenticatedClient.swift's ordinary path.
+            bearer = try RFC_6750.Bearer(token: secretKey.rawValue)
         } catch {
             throw .credential("\(error)")
         }
